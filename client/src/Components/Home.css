@@ -1,0 +1,28 @@
+#name {
+    margin-left: 36.5%;
+}
+
+#scritta1 {
+    margin-left: 25%;
+    margin-top: 20px;
+}
+
+#scritta2 {
+    margin-left: 4%;
+}
+
+#btnHomeArticoli {
+    margin-left: 30%;
+}
+
+#btnHomeProblemi {
+    margin-left: 5%;
+}
+
+#btnHomeStudio {
+    margin-left: 5%;
+}
+
+#btnHomeArticoli, #btnHomeProblemi, #btnHomeStudio {
+    margin-top: 100px;
+}

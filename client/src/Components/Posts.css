@@ -1,0 +1,40 @@
+.articolo {
+    width: 25%;
+    height: 250px;
+
+    margin-left: 5%;
+    margin-top: 50px;
+
+    display: inline-block;
+
+    transition: all 0.5s;
+}
+
+.articolo:hover {
+    box-shadow: -2px 16px 53px 4px rgba(0,0,0,0.22);
+-webkit-box-shadow: -2px 16px 53px 4px rgba(0,0,0,0.22);
+-moz-box-shadow: -2px 16px 53px 4px rgba(0,0,0,0.22);
+}
+
+.description {
+    height: 80px;
+
+    overflow:hidden;
+    text-overflow:ellipsis;
+
+    color: black;
+}
+
+.scrittaTag {
+    position: relative;
+    top: -20px;
+
+    font-size: 12px;
+
+    color: black;
+}
+
+.tag {
+    position: relative;
+    top: -15px;
+}
