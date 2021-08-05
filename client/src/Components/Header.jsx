@@ -5,7 +5,7 @@ import axios from 'axios'
 import Cookie from 'js-cookie'
 
 import './Header.css'
-import { Button, FlexboxGrid, Modal, Input, Alert } from 'rsuite'
+import { Button, FlexboxGrid, Modal, Input, Alert, Checkbox } from 'rsuite'
 
 export default function Header() {
 
@@ -21,6 +21,8 @@ export default function Header() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [controlloPsw, setControlloPsw] = useState('')
+    const [passwordAdmin, setPasswordAdmin] = useState('')
+    const [admin, setAdmin] = useState(false)
 
     const login = () => {
         setLoading(true)
@@ -44,7 +46,7 @@ export default function Header() {
     const register = () => {
         setLoading(true)
 
-        if (name == '' || surname == '' || email == '' || password == '' || controlloPsw == '') {
+        if (name === '' || surname === '' || email === '' || password === '' || controlloPsw === '') {
             setLoading(false)
             Alert.error("Completare tutti i campi")
 
@@ -58,13 +60,27 @@ export default function Header() {
             return
         }
 
+        let controlloAdmin = false
+
+        if (admin) {
+            if (passwordAdmin !== '1234') {
+                setLoading(false)
+                Alert.error('Password amministratore errata')
+
+                return
+            } else {
+                controlloAdmin = true
+            }
+        }
+
         axios.post(`${urlServer}/register/controllo-utente`, {email}).then(result => {
             console.log(result.data)
             if (result.data) {
-                axios.post(`${urlServer}/register`, {name, surname, email, password}).then(res => {
+                axios.post(`${urlServer}/register`, {name, surname, email, password, admin: controlloAdmin}).then(res => {
+                    console.log(res.data)
                     setUser(res.data)
 
-                    Cookie.set(res.data._id)
+                    Cookie.set("token", res.data._id)
         
                     setShowModal2(false)
                     reset()
@@ -89,7 +105,9 @@ export default function Header() {
             <Link to="/" id="linkNomeSito"><p id="nomeSito">Roitinfo</p></Link>
             <Link to="/articoli"><Button appearance="primary" id="btnArticoli">Articoli</Button></Link>
             <FlexboxGrid justify="end">
-                <Button onClick={() => setShowModal1(true)} appearance="primary" id="btnLogin">Login</Button>
+                {
+                    Cookie.get('token') ? <Link to="/profile" id="btnProfilo"><Button appearance="primary">Profilo</Button></Link> : <Button onClick={() => setShowModal1(true)} appearance="primary" id="btnLogin">Login</Button>
+                }
             </FlexboxGrid>
 
 
@@ -125,6 +143,10 @@ export default function Header() {
                     <Input value={email} onChange={e => setEmail(e)} className="input" placeholder="Email" type="email" />
                     <Input value={password} onChange={e => setPassword(e)} className="inpu" id="inputPsw" placeholder="Password" type="password" />
                     <Input value={controlloPsw} onChange={e => setControlloPsw(e)} className="input" placeholder="Conferma password" type="password" />
+                    <Checkbox className="input" onChange={(value, checked) => {setAdmin(checked); checked ? setAdmin(checked) : setPasswordAdmin('')}}> Admin</Checkbox>
+                    {
+                        admin ? <Input value={passwordAdmin} onChange={e => setPasswordAdmin(e)} className="input" placeholder="Password admin" type="password" /> : ''
+                    }
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={register} loading={loading} appearance="primary">

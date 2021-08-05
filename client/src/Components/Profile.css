@@ -1,0 +1,74 @@
+#loadingPageProfile {
+    margin-top: 200px;
+}
+
+#nomeUser {
+    font-size: 12px;
+}
+
+#nomeUser button {
+    margin-left: 10px;
+
+    background: none;
+}
+
+#sidebar {
+    border: 1px solid black;
+
+    height: 100vh;
+
+    padding: 10px;
+}
+
+#sidenav {
+    border-radius: 20px;
+}
+
+#content {
+    border: 1px solid black;
+
+    height: 100vh;
+
+    overflow: auto;
+
+    padding-bottom: 50px;
+}
+
+.imgIcon {
+    width: 25px;
+    height: 25px;
+
+    margin-right: 20px;
+}
+
+#iconImpostazioni {
+    position: relative;
+    left: -15px;
+}
+
+.imgEmpty {
+    margin-top: 20%;
+}
+
+.loadingArgomento {
+    margin-top: 200px;
+}
+
+#editor {
+    border: 1px solid orange;
+    padding: 20px;
+}
+
+#btnPlus {
+    margin-left: 15px;
+}
+
+#inputTag {
+    display: inline-block;
+
+    margin-left: 15px;
+}
+
+#titoloArticolo {
+    margin-bottom: 20px;
+}

@@ -45,6 +45,10 @@ app.post('/post/exact', (req, res) => {
     Post.find({ _id: req.body.id }).then(result => res.send(result)).catch(err => res.send(err))
 })
 
+app.post('/user-id', (req, res) => {
+    User.find({ _id: req.body.id }).then(result => res.send(result)).catch(err => res.send(err))
+})
+
 app.post('/login', (req, res) => {
     res.setHeader('Cache-Control', 'private');
     User.find({ email: req.body.email }).then(result => {
@@ -83,7 +87,9 @@ app.post('/register', (req, res) => {
                 name: req.body.name,
                 surname: req.body.surname,
                 email: req.body.email,
-                password: hash
+                password: hash,
+                preferiti: [],
+                admin: req.body.admin
             })
 
             user.save().then(result => {
@@ -92,4 +98,26 @@ app.post('/register', (req, res) => {
             }).catch(err => res.send(err))
         })
     })
+})
+
+app.post('/post/add-preferito', (req, res) => {
+    const { id, preferiti } = req.body
+
+    User.updateOne({ _id: id }, { preferiti: preferiti }).then(result => res.send(result)).catch(err => res.send(err))
+})
+
+app.post('/post/remove-preferito', (req, res) => {
+    const { id, preferiti } = req.body
+
+    User.updateOne({ _id: id }, { preferiti: preferiti }).then(result => res.send(result)).catch(err => res.send(err))
+})
+
+app.post('/post', (req, res) => {
+    Post.find({_id: req.body.id}).then(result => res.send(result)).catch(err => res.send(err))
+})
+
+app.post('/post/add', (req, res) => {
+    const post = new Post(req.body.post)
+
+    post.save()
 })

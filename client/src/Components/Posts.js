@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { TagGroup, Tag, Panel, Placeholder } from 'rsuite'
+import { TagGroup, Tag, Panel, Placeholder, FlexboxGrid } from 'rsuite'
 import './Posts.css'
 
 export default function Posts({ posts, loading }) {
@@ -67,10 +67,10 @@ export default function Posts({ posts, loading }) {
 
 
     return (
-        <div>
+        <div id="prova2">
             {posts.map(e => {
                 return (
-                    <Link to={`/post/${e._id}`}>
+                    <Link className="linkArticolo" to={`/post/${e._id}`}>
                         <Panel className="articolo" header={e.title} shaded>
                             <label className="scrittaTag">Tag</label>
                             <TagGroup className="tag">

@@ -1,5 +1,5 @@
 #pagePost {
-    height: 100vh;
+    height: 100%;
 }
 
 .Post {
@@ -11,6 +11,8 @@
 
     font-size: 40px;
 
+    margin-bottom: 20px;
+
     text-align: center;
 }
 
@@ -20,6 +22,20 @@
     font-size: 15px;
 }
 
-#btnSave {
+.btnSave {
     background: none;
+}
+
+.headerArticolo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.videoYoutube {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#testoArticolo {
+    height: auto;
 }

@@ -17,6 +17,14 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    preferiti: {
+        type: Array,
+        required: false
+    },
+    admin: {
+        type: Boolean,
+        required: true
     }
 })
 

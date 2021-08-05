@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './Header'
 import { Link } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 import './Home.css'
 import { Button as RButton } from 'rsuite'
 
 export default function Home() {
+
+    useEffect(() => {
+        console.log(Cookies.get('token'))
+    }, [])
 
     return (
         <div>

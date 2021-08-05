@@ -1,0 +1,26 @@
+#img404 {
+    margin-top: 10%;
+    margin-left: 40%;
+}
+
+#scritta404 {
+    margin-top: 25px;
+    margin-left: 43%;
+
+    font-size: 20px;
+}
+
+#btn404 {
+    margin-left: 44.5%;
+    margin-top: 20px;
+}
+
+#link404 {
+    color: white;
+
+    text-decoration: none;
+}
+
+#link404:hover {
+    text-decoration: none;
+}

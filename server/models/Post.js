@@ -6,13 +6,17 @@ const postSchema = new Schema({
         type: String,
         required: true
     },
-    text: {
-        type: String,
+    time: {
+        type: Number,
+        require: true
+    },
+    blocks: {
+        type: Array,
         required: true
     },
-    description: {
+    version: {
         type: String,
-        required: false
+        required: true
     },
     tags: {
         type: Array,
