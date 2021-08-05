@@ -4,6 +4,7 @@ import AuthContext from '../Context/AuthContext'
 import ArticoliSalvati from './ArticoliSalvati'
 import ProblemiSalvati from './ProblemiSalvati'
 import NewPost from './NewPost'
+import ImpostazioniUser from './ImpostazioniUser'
 import Footer from './Footer'
 import { useHistory } from 'react-router'
 import Cookies from 'js-cookie'
@@ -29,7 +30,7 @@ export default function Profile() {
     const option = (e) => {
         switch (e) {
             case "Impostazioni":
-
+                setcontentValue(<ImpostazioniUser />)
                 break;
 
             case "Articoli":
@@ -83,7 +84,7 @@ export default function Profile() {
                         <Sidenav id="sidenav">
                             <Sidenav.Body>
                                 <Nav>
-                                    <Nav.Item onClick={option("Impostazioni")}>
+                                    <Nav.Item onClick={() => option("Impostazioni")}>
                                         {
                                             user ? <p id="nomeUser"><button id="iconImpostazioni"><Icon size="lg" icon="cog" /></button> {user.name} {user.surname}</p> : <p id="nomeUser"><Paragraph active /> <button><Icon icon="cog" /></button></p>
                                         }

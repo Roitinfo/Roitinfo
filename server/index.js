@@ -49,6 +49,33 @@ app.post('/user-id', (req, res) => {
     User.find({ _id: req.body.id }).then(result => res.send(result)).catch(err => res.send(err))
 })
 
+app.post('/user/cambio-nome', (req, res) => {
+    User.updateOne({_id: req.body.id}, {name: req.body.name}).then(result => res.send(result)).catch(err => res.send(err))
+})
+
+app.post('/user/cambio-cognome', (req, res) => {
+    User.updateOne({_id: req.body.id}, {surname: req.body.surname}).then(result => res.send(result)).catch(err => res.send(err))
+})
+
+app.post('/user/cambio-password', (req, res) => {
+    User.find({_id: req.body.id}).then(result => {
+        bcrypt.compare(req.body.vecchia, result[0].password, (err, resultHash) => {
+            console.log("hash", resultHash)
+            if (resultHash) {
+
+                bcrypt.genSalt(saltRounds, function (err, salt) {
+                    bcrypt.hash(req.body.nuova, salt, function (err, hash) {
+                        User.updateOne({_id: req.body.id}, {password: hash}).then(result2 => res.send(result2)).catch(err2 => res.send(err))
+                    })
+                })
+
+            } else {
+                res.send(false)
+            }
+        })
+    })
+})
+
 app.post('/login', (req, res) => {
     res.setHeader('Cache-Control', 'private');
     User.find({ email: req.body.email }).then(result => {

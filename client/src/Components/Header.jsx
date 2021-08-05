@@ -118,8 +118,8 @@ export default function Header() {
                 </Modal.Header>
                 <Modal.Body>
                     <Input value={email} onChange={e => setEmail(e)} placeholder="Email" />
-                    <Input value={password} onChange={e => setPassword(e)} id="inputPsw" placeholder="Password" />
-                    <p id="scrittaRegister">Non hai un accoutn? <Button onClick={() => { setShowModal1(false); setShowModal2(true); reset() }} id="btnRegister" appearance="primary">Registrati</Button></p>
+                    <Input value={password} onChange={e => setPassword(e)} type="password" id="inputPsw" placeholder="Password" />
+                    <p id="scrittaRegister">Non hai un accoutn? <Button size="sm" onClick={() => { setShowModal1(false); setShowModal2(true); reset() }} id="btnRegister" appearance="primary">Registrati</Button></p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button loading={loading} onClick={login} appearance="primary">
