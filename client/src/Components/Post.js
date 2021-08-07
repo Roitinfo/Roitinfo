@@ -6,8 +6,10 @@ import AuthContext from '../Context/AuthContext'
 import Footer from './Footer'
 import ReactPlayer from 'react-player/youtube';
 
-import { Placeholder, FlexboxGrid, Icon } from 'rsuite'
+import { Placeholder, FlexboxGrid, Icon, Divider, Checkbox } from 'rsuite'
 import './Post.css'
+import imgCircle from '../img/circle-outline.png'
+import imgCheck from '../img/checkbox-mark.png'
 
 export default function Post() {
     const { Paragraph } = Placeholder
@@ -116,7 +118,57 @@ export default function Post() {
         )
     }
 
+    const makeDelimiter = e => {
+        return (
+            <Divider />
+        )
+    }
 
+    const makeCheckList = e => {
+        console.log("la lista viene chiamata")
+        return <div className="checkListContainer">
+            {
+                e.data.items.map(el => {
+                    if (el.checked) {
+                        return (
+                            <div className="divProva">
+                                <img className="imgCerchio" src={imgCircle} alt="cerchio" />
+                                <img className="imgCheck" src={imgCheck} alt="check" />
+                                {el.text}
+                            </div>
+                        )
+                    } else {
+                        return (
+                            <div className="divProva">
+                                <img className="imgCerchio" src={imgCircle} alt="cerchio" />
+                                {el.text}
+                            </div>
+                        )
+                    }
+                })
+            }
+        </div>
+    }
+
+
+    const makeList = e => {
+        if (e.data.style === "ordered") {
+            return (
+                <div>
+                    {
+                        e.data.items.map((el, index) => {
+                            return (
+                                <div className="elListaNumerata">
+                                    <p>{index}.</p>
+                                    <p className="pListaNumerata">{el}</p>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            )
+        }
+    }
 
 
 
@@ -138,6 +190,18 @@ export default function Post() {
 
                     case "LinkTool":
                         setStylePost(e => [...e, makeLinkYoutube(obj)])
+                        break;
+
+                    case "Delimiter":
+                        setStylePost(e => [...e, makeDelimiter(obj)])
+                        break;
+
+                    case "CheckList":
+                        setStylePost(e => [...e, makeCheckList(obj)])
+                        break;
+
+                    case "List":
+                        setStylePost(e => [...e, makeList(obj)])
 
                     default:
                         break;

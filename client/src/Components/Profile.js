@@ -5,6 +5,7 @@ import ArticoliSalvati from './ArticoliSalvati'
 import ProblemiSalvati from './ProblemiSalvati'
 import NewPost from './NewPost'
 import ImpostazioniUser from './ImpostazioniUser'
+import ModificaPost from './ModificaPost'
 import Footer from './Footer'
 import { useHistory } from 'react-router'
 import Cookies from 'js-cookie'
@@ -14,6 +15,7 @@ import './Profile.css'
 import imgArticolo from '../img/articolo.png'
 import imgProblema from '../img/problem-solving.png'
 import imgManoConPenna from '../img/writing.png'
+import imgEdit from '../img/edit.png'
 import { Spin, Space } from 'antd';
 
 
@@ -35,17 +37,17 @@ export default function Profile() {
 
             case "Articoli":
                 setcontentValue(<ArticoliSalvati />)
-
                 break;
 
             case "Problemi":
                 setcontentValue(<ProblemiSalvati />)
+                break;
 
+            case "Modifica":
+                setcontentValue(<ModificaPost />)
                 break;
 
             case "Scrivi":
-
-                console.log("cliccato")
                 setcontentValue(<NewPost />)
                 break;
 
@@ -95,6 +97,9 @@ export default function Profile() {
                                     <Nav.Item onClick={() => option("Problemi")} icon={<img className="imgIcon" src={imgProblema} alt="incona pulsante problemi salvati" />}>
                                         Problemi salvati
                                     </Nav.Item>
+                                    {
+                                        user.admin ? <Nav.Item onClick={() => option("Modifica")} icon={<img className="imgIcon" src={imgEdit} alt="modifica articolo" />}>Modifica</Nav.Item> : ''
+                                    }
                                     {
                                         user.admin ? <Nav.Item onClick={() => option("Scrivi")} icon={<img className="imgIcon" src={imgManoConPenna} alt="mano con una penna" />}>Scrivi</Nav.Item> : ''
                                     }

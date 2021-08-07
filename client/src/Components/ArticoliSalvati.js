@@ -59,7 +59,7 @@ export default function ArticoliSalvati() {
                             </p>
                         </Panel>
                     </Link >
-                }) : user.preferiti.length ? <FlexboxGrid justify="center" className="loadingArgomento"><Space size="middle"><Spin size="large" /></Space></FlexboxGrid> : <Empty />
+                }) : user.preferiti.length ? <FlexboxGrid justify="center" className="loadingArgomento"><Space size="middle"><Spin size="large" /></Space></FlexboxGrid> : <Empty style={{marginTop: "50px"}} />
             }
         </div>
     )

@@ -62,9 +62,13 @@
 
 /* NewPost */
 
-#editor {
+.editor {
     border: 1px solid orange;
     padding: 20px;
+}
+
+#divisore {
+    margin-top: 40px;
 }
 
 #btnPlus {
@@ -130,4 +134,22 @@
 
 #cambioNome Button, #cambioCognome Button, #cambioPassword Button {
     margin-top: 20px;
+}
+
+/* ModificaPost */
+
+#inputSearch {
+    margin-top: 20px;
+    margin-left: 20px;
+
+    width: 20%;
+}
+
+.loadingPost {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#modificaArticolo {
+    margin-top: 50px;
 }

@@ -57,6 +57,10 @@ app.post('/user/cambio-cognome', (req, res) => {
     User.updateOne({_id: req.body.id}, {surname: req.body.surname}).then(result => res.send(result)).catch(err => res.send(err))
 })
 
+app.post('/user/cambio-cognome', (req, res) => {
+    User.updateOne({_id: req.body.id}, {surname: req.body.surname}).then(result => res.send(result)).catch(err => res.send(err))
+})
+
 app.post('/user/cambio-password', (req, res) => {
     User.find({_id: req.body.id}).then(result => {
         bcrypt.compare(req.body.vecchia, result[0].password, (err, resultHash) => {
@@ -147,4 +151,16 @@ app.post('/post/add', (req, res) => {
     const post = new Post(req.body.post)
 
     post.save()
+})
+
+app.post('/post/data', (req, res) => {
+    Post.find({_id: req.body.id}).then(result => res.send(result)).catch(err => res.send(err))
+})
+
+app.post('/post/modifica', (req, res) => {
+    const { post, id } = req.body
+
+    const { title, description, blocks, time, modificato, version, tags } = post
+
+    Post.updateOne({_id: id}, {title, description, blocks, time, description, modificato, version, tags}).then(result => res.send(result)).catch(err => res.send(err))
 })

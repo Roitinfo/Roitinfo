@@ -18,7 +18,19 @@ const postSchema = new Schema({
         type: String,
         required: true
     },
+    creator: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: false
+    },
     tags: {
+        type: Array,
+        required: true
+    },
+    modificato: {
         type: Array,
         required: true
     }

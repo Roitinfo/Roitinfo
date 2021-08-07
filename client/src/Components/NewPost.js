@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
 import AuthContext from '../Context/AuthContext'
+import axios from 'axios';
 
 import { Button, FlexboxGrid, TagGroup, Tag, IconButton, Icon, Input } from 'rsuite'
+
+import { Input as AInput } from 'antd';
 
 
 import EditorJs from 'react-editor-js';
@@ -12,7 +15,6 @@ import InlineCode from '@editorjs/inline-code'
 import Marker from '@editorjs/marker'
 import Header from '@editorjs/header'
 import LinkTool from '@editorjs/link'
-import axios from 'axios';
 
 export default function NewPost() {
     const [data, setData] = useState()
@@ -23,9 +25,12 @@ export default function NewPost() {
     })
     const [renderInput, setrenderInput] = useState('')
 
-    const { urlServer } = useContext(AuthContext)
+    const { urlServer, user } = useContext(AuthContext)
 
     const [title, setTitle] = useState('')
+    const [textArea, setTextArea] = useState('')
+
+    const { TextArea } = AInput;
 
     useEffect(() => {
         console.log("à cambiato")
@@ -39,6 +44,9 @@ export default function NewPost() {
 
         post['tags'] = state.tags
         post['title'] = title
+        post['creator'] = user._id
+        post['description'] = textArea
+        post['modificato'] = []
 
         console.log(post)
 
@@ -126,8 +134,10 @@ export default function NewPost() {
     const { tags } = state
 
     return (
-        <div id="editor">
+        <div className="editor">
             <Input placeholder="Titolo dell'articolo" value={title} onChange={e => setTitle(e)} id="titoloArticolo" />
+            <TextArea value={textArea} onChange={e => setTextArea(e.target.value)} showCount maxLength={200} placeholder="Descrizione" />
+            <p id="divisore"></p>
             <EditorJs data={data} instanceRef={e => setData(e)} tools={{ Header, CheckList, List, Delimiter, InlineCode, Marker, LinkTool }} />
 
             <TagGroup>
