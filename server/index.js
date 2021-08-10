@@ -150,7 +150,7 @@ app.post('/post', (req, res) => {
 app.post('/post/add', (req, res) => {
     const post = new Post(req.body.post)
 
-    post.save()
+    post.save().then(res.send(post).catch(err => res.send(err)))
 })
 
 app.post('/post/data', (req, res) => {

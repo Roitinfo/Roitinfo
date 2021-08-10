@@ -3,9 +3,9 @@ import Header from './Header'
 import AuthContext from '../Context/AuthContext'
 import ArticoliSalvati from './ArticoliSalvati'
 import ProblemiSalvati from './ProblemiSalvati'
-import NewPost from './NewPost'
+import PostEditor from './PostEditor'
 import ImpostazioniUser from './ImpostazioniUser'
-import ModificaPost from './ModificaPost'
+import ScegliPost from './ScegliPost'
 import Footer from './Footer'
 import { useHistory } from 'react-router'
 import Cookies from 'js-cookie'
@@ -29,9 +29,9 @@ export default function Profile() {
 
     const [contentValue, setcontentValue] = useState(<ArticoliSalvati />)
 
-    const modifyArticle = (e) => {
-        console.log(e)
-        setcontentValue(<NewPost id={e.currentTarget.id}/>)
+    const modifyArticle = (id) => {
+        console.log(id)
+        setcontentValue(<PostEditor id={id}/>)
     }
 
     const option = (e) => {
@@ -49,11 +49,11 @@ export default function Profile() {
                 break;
 
             case "Modifica":
-                setcontentValue(<ModificaPost onArticleSelected={modifyArticle}/>)
+                setcontentValue(<ScegliPost onArticleSelected={ (e) => modifyArticle(e.currentTarget.id)}/>)
                 break;
 
             case "Scrivi":
-                setcontentValue(<NewPost/>)
+                setcontentValue(<PostEditor/>)
                 break;
 
             default:
