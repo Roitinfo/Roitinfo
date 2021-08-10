@@ -19,7 +19,7 @@ import Header from '@editorjs/header'
 import LinkTool from '@editorjs/link'
 
 
-export default function ModificaPost() {
+export default function ModificaPost(props) {
     const [renderInput, setrenderInput] = useState('')
 
     const { urlServer, user } = useContext(AuthContext)
@@ -184,6 +184,8 @@ export default function ModificaPost() {
         console.log("modifica", e.currentTarget.id)
 
         axios.post(`${urlServer}/post/data`, { id: e.currentTarget.id }).then(res => {
+            console.log("DATA:")
+            console.log(res.data[0])
             setModificaPost(res.data[0])
             let temp = {}
             temp['blocks'] = res.data[0].blocks
@@ -247,7 +249,7 @@ export default function ModificaPost() {
                             <FlexboxGrid justify="center" className="loadingPost"><Space size="middle"><Spin size="large" /></Space></FlexboxGrid>
                             : postsFiltrati.map(e => {
                                 return (
-                                    <Link className="linkArticolo" id={e._id} onClick={e => modifica(e)}>
+                                    <Link className="linkArticolo" id={e._id} onClick={e => props.onArticleSelected(e)}>
                                         <Panel className="articolo" header={e.title} shaded>
                                             <label className="scrittaTag">Tag</label>
                                             <TagGroup className="tag">

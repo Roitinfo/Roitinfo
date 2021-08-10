@@ -29,6 +29,11 @@ export default function Profile() {
 
     const [contentValue, setcontentValue] = useState(<ArticoliSalvati />)
 
+    const modifyArticle = (e) => {
+        console.log(e)
+        setcontentValue(<NewPost id={e.currentTarget.id}/>)
+    }
+
     const option = (e) => {
         switch (e) {
             case "Impostazioni":
@@ -44,11 +49,11 @@ export default function Profile() {
                 break;
 
             case "Modifica":
-                setcontentValue(<ModificaPost />)
+                setcontentValue(<ModificaPost onArticleSelected={modifyArticle}/>)
                 break;
 
             case "Scrivi":
-                setcontentValue(<NewPost />)
+                setcontentValue(<NewPost/>)
                 break;
 
             default:
