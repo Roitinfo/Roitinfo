@@ -58,7 +58,7 @@ export default function ModificaPost(props) {
     //Get current post
     const indexOfLastPost = currentPage * postsPerPage
     const indexOfFirstPost = indexOfLastPost - postsPerPage
-    const currentPost = posts.slice(indexOfFirstPost, indexOfLastPost)
+    const currentPost = postsFiltrati.slice(indexOfFirstPost, indexOfLastPost)
 
     const paginate = (e) => {
         setCurrentPage(e)
@@ -74,6 +74,10 @@ export default function ModificaPost(props) {
         setpostsFiltrati(posts.filter(el => el.title.toLowerCase().includes(search.toLowerCase())))
     }
 
+    useEffect(() => {
+        filterPosts()
+    }, [search])
+
     return (
         <div>
             <div id="posts">
@@ -87,7 +91,7 @@ export default function ModificaPost(props) {
                 {
                     !postsFiltrati.length && !posts.length ?
                         <FlexboxGrid justify="center" className="loadingPost"><Space size="middle"><Spin size="large" /></Space></FlexboxGrid>
-                        : postsFiltrati.map(e => {
+                        : currentPost.map(e => {
                             return (
                                 <Link className="linkArticolo" id={e._id} onClick={e => props.onArticleSelected(e)}>
                                     <Panel className="articolo" header={e.title} shaded>
@@ -108,7 +112,7 @@ export default function ModificaPost(props) {
                             )
                         })
                 }
-                <Pagination posts={posts} postsPerPage={postsPerPage} paginate={paginate} />
+                <Pagination posts={postsFiltrati} postsPerPage={postsPerPage} paginate={paginate} />
             </div>
         </div>
     )
