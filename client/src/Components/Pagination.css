@@ -1,0 +1,11 @@
+#div-pagination {
+    padding: 20px;
+
+    overflow: hidden;
+}
+.pagination {
+    position: relative;
+    left: 45%;
+
+    width: auto;
+}

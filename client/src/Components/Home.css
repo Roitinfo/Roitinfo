@@ -1,0 +1,44 @@
+#name {
+    margin-left: 36.5%;
+}
+
+#scritta1 {
+    margin-left: 25%;
+    margin-top: 20px;
+}
+
+#scritta2 {
+    margin-left: 4%;
+}
+
+#btnHomeArticoli {
+    margin-left: 30%;
+}
+
+#btnHomeProblemi {
+    margin-left: 5%;
+}
+
+#btnHomeStudio {
+    margin-left: 5%;
+}
+
+#btnHomeArticoli, #btnHomeProblemi, #btnHomeStudio {
+    margin-top: 100px;
+}
+
+.btnPrincipali {
+    padding: 10px;
+    background: none;
+
+    border-radius: 20px;
+
+    margin-right: 40px;
+
+    transition: all 0.5s;
+}
+
+.btnPrincipali:hover {
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.23); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.23);
+}

@@ -1,0 +1,155 @@
+#loadingPageProfile {
+    margin-top: 200px;
+}
+
+#nomeUser {
+    font-size: 12px;
+}
+
+#nomeUser button {
+    margin-left: 10px;
+
+    background: none;
+}
+
+#sidebar {
+    border: 1px solid black;
+
+    height: 100vh;
+
+    padding: 10px;
+}
+
+#sidenav {
+    border-radius: 20px;
+}
+
+#content {
+    border: 1px solid black;
+
+    height: 100vh;
+
+    overflow: auto;
+
+    padding-bottom: 50px;
+}
+
+.imgIcon {
+    width: 25px;
+    height: 25px;
+
+    margin-right: 20px;
+}
+
+#iconImpostazioni {
+    position: relative;
+    left: -15px;
+}
+
+
+
+/* Articoli salvati */
+
+.imgEmpty {
+    margin-top: 20%;
+}
+
+.loadingArgomento {
+    margin-top: 200px;
+}
+
+
+
+/* NewPost */
+
+.editor {
+    border: 1px solid orange;
+    padding: 20px;
+}
+
+#divisore {
+    margin-top: 40px;
+}
+
+#btnPlus {
+    margin-left: 15px;
+}
+
+#inputTag {
+    display: inline-block;
+
+    margin-left: 15px;
+}
+
+#titoloArticolo {
+    margin-bottom: 20px;
+}
+
+
+/* ImpostazioniUser */
+
+#impostazioniUser {
+    padding: 20px;
+}
+
+#nomeCognome {
+    padding: 10px;
+
+    border-radius: 20px;
+
+    width: auto;
+
+    font-size: 20px;
+
+    margin-bottom: 40px;
+
+    text-align: center;
+
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.38); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.38);
+}
+
+#cambioNome, #cambioCognome, #cambioPassword {
+    padding: 20px;
+
+    width: 400px;
+
+    border-radius: 20px;
+
+    margin-bottom: 20px;
+
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.38); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.38);
+}
+
+#cambioNome p, #cambioCognome p, #cambioPassword {
+    font-size: 18px;
+}
+
+#cambioNome Input, #cambioCognome Input, #cambioPassword Input {
+    margin-top: 20px;
+
+    width: 200px;
+}
+
+#cambioNome Button, #cambioCognome Button, #cambioPassword Button {
+    margin-top: 20px;
+}
+
+/* ModificaPost */
+
+#inputSearch {
+    margin-top: 20px;
+    margin-left: 20px;
+
+    width: 20%;
+}
+
+.loadingPost {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#modificaArticolo {
+    margin-top: 50px;
+}

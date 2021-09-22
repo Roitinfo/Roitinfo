@@ -1,0 +1,147 @@
+#header {
+    width: 100%;
+
+    border: 1px solid black;
+
+    background-color: #ffe9e5;
+
+    padding-top: 15px;
+    padding-left: 12px;
+
+    padding-bottom: 15px;
+}
+
+#nomeSito {
+    border: 1px solid black;
+    font-size: 20px;
+
+    width: 80px;
+
+    display: inline;
+}
+
+#linkNomeSito {
+    text-decoration: none;
+
+    color: black
+}
+
+#linkNomeSito:hover {
+    text-decoration: none;
+}
+
+#btnArticoli {
+    margin-left: 25px;
+}
+
+#btnLogin, #btnProfilo {
+    margin-top: -37px;
+    margin-right: 50px;
+}
+
+#inputPsw {
+    margin-top: 20px;
+}
+
+#scrittaRegister {
+    margin-top: 20px;
+}
+
+#btnRegister {
+    margin-left: 5%;
+}
+
+.input {
+    margin-top: 20px;
+}
+
+#imgMenu {
+    width: 30px;
+    height: 30px;
+}
+
+#imgLogo {
+    width: 150px;
+    height: 52px;
+}
+
+#imgLogin {
+    width: 70px;
+    height: 38px;
+
+    transition: all 0.2s;
+}
+
+#imgLogin:hover {
+    width: 72px;
+    height: 40px;
+}
+
+
+/*          MODAL LOGIN         */
+
+#imgClose {
+    width: 20px;
+    height: 20px;
+
+    transition: all 0.2s;
+}
+
+#imgClose:hover {
+    width: 22px;
+    height: 22px;
+}
+
+.inputEmail {
+    width: 100%;
+    height: 45px;
+
+    background: none;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    position: relative;
+    top: -65px;
+
+    border: none;
+}
+
+.scrittaEmail, .scrittaPass {
+    opacity: 100%;
+
+    transition: all 0.3s;
+}
+
+#backgroundRegistrati {
+    width: 100px;
+
+    margin-left: -15px;
+
+    position: relative;
+    z-index: 0;
+
+    transition: all 0.3s;
+}
+
+#imgRegistrati {
+    width: 70px;
+    height: 18px;
+
+    position: relative;
+    z-index: 0px;
+
+    margin-left: -85.5px;
+    margin-top: 2.5px;
+
+    transition: all 0.3s;
+}
+
+#btnRegistrati:hover #backgroundRegistrati {
+    width: 102px;
+}
+
+#btnRegistrati:hover #imgRegistrati {
+    margin-left: -87px;
+}

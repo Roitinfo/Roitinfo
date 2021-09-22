@@ -1,0 +1,76 @@
+#pagePost {
+    height: 100%;
+}
+
+.Post {
+    padding: 50px;
+}
+
+.title {
+    width: 70%;
+
+    font-size: 40px;
+
+    margin-bottom: 20px;
+
+    text-align: center;
+}
+
+.text {
+    margin-top: 100px;
+
+    font-size: 15px;
+}
+
+.btnSave {
+    background: none;
+}
+
+.headerArticolo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.videoYoutube {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#testoArticolo {
+    height: auto;
+}
+
+.checkListContainer {
+    padding: 20px;
+    padding-left: 30px;
+}
+
+.imgCerchio {
+
+    width: 25px;
+    height: 25px;
+
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.imgCheck {
+    width: 15px;
+    height: 15px;
+
+    margin-left: -40px;
+    margin-right: 28px;
+    margin-top: 10px;
+}
+
+.elListaNumerata {
+    margin-top: 10px;
+
+    padding-left: 30px;
+}
+
+.elListaNumerata p {    
+    display: inline-block;
+
+    margin-right: 20px;
+}
