@@ -1,0 +1,11 @@
+.frecciaArticles {
+    width: 35px;
+    height: 35px;
+
+    transition: all 0.3s;
+}
+
+.frecciaArticles:hover {
+    width: 37px;
+    height: 37px;
+}

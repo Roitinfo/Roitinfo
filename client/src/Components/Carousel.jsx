@@ -10,10 +10,14 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-import FreccaDestra from '../img/IMG_1404.png'
-import FreccaSinistra from '../img/IMG_1405.png'
+import FreccaDestra from '../img/Untitled_Artwork-28.png'
+import FreccaSinistra from '../img/Untitled_Artwork-29.png'
 import Lente from '../img/IMG_1409.png'
 import Scritta from '../img/IMG_1408.png'
+import outlineSearchInput from '../img/Untitled_Artwork-33.png'
+import noDataArticles from '../img/Untitled_Artwork-39.png'
+import scrittaNoDataArticles from '../img/Untitled_Artwork-40.png'
+import backgroundEquazioniCarousel from '../img/Untitled_Artwork-17.png'
 
 function Carousel() {
 
@@ -46,7 +50,7 @@ function Carousel() {
     }, [filterTags])
 
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: slidesToShow,
@@ -66,7 +70,7 @@ function Carousel() {
             setSelectTags(el => [...el, e])
             setSearchValue('')
             setFilterTags([])
-            
+
             setSearch(false)
         }
     }
@@ -90,89 +94,118 @@ function Carousel() {
 
     //impedisce che la scritta "No data" appiai più volte
     useEffect(() => {
-        if (selectArticles.length === 0)
+        if (selectArticles.length === 1 || selectArticles.length === 0)
             setSlidesToShow(1)
         else if (selectArticles.length === 2)
             setSlidesToShow(2)
         else
             setSlidesToShow(3)
+
+        console.log("è cambiato guarda", selectArticles.length)
     }, [selectArticles])
+
+    const [showBoxTags, setShowBoxTags] = useState(true)
+    const [cambioZIndex, setCambioZIndex] = useState(2)
+
+    useEffect(() => {
+        if (searchValue === '' || filterTags.length === 0) {
+            setShowBoxTags(true)
+            setCambioZIndex(3)
+        } else {
+            setShowBoxTags(false)
+            setCambioZIndex(0)
+        }
+    }, [searchValue])
 
 
     return (
-        <div style={{ border: "1px solid black", width: "100%", height: "700px", overflow: "hidden", backgroundColor: "orange" }}>
-            <FlexboxGrid justify="center">
-                <div style={{ width: "250px", padding: "10px", borderRadius: "10px", marginTop: "20px", backgroundColor: "white" }}>
-                    <button style={{ background: "none", padding: "0px" }}><img src={Lente} style={{ width: "25px", height: "25px" }} /></button>
-                    <img className={classNames({ dontShow: search, searchShow: true })} src={Scritta} style={{ width: "180px", height: "30px", marginTop: "4px", marginLeft: "10px" }} />
-                </div>
-            </FlexboxGrid>
-
-            <FlexboxGrid justify="center">
-                <input onChange={(e) => { setSearchValue(e.target.value); changeInput(e) }} onBlur={() => {
-                    if (searchValue === '')
-                        setSearch(false)
-                }} onFocus={() => setSearch(true)} style={{ fontSize: "20px" }} id="searchArticles" value={searchValue} />
-            </FlexboxGrid>
-
-            <FlexboxGrid justify="center">
-                <div id="boxTags">
-                    {
-                        filterTags.map(e => {
-
-                            let prova = false;
-
-                            setTimeout(() => prova = true, 1000)
-
-
-                            return (
-                                <button onClick={el => aggiungiTag(el)} className={classNames({ selectTag: true, animationTag: prova })} id={e}>{e}</button>
-                            )
-                        })
-                    }
-                </div>
-            </FlexboxGrid>
-
-            <FlexboxGrid justify="center">
-                <div style={{ border: "1px solid black", width: "auto", padding: "10px" }}>
-                    {
-                        selectTags.map(el => {
-                            return (
-                                <div style={{ display: "inline" }}>
-                                    <button onClick={e => setSelectTags(selectTags.filter(ta => ta !== e.target.id))} id={el}>
-                                        x
-                                    </button>
-                                    {el}
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-            </FlexboxGrid>
-
-            <Slider ref={c => slider.current = c} {...settings} style={{ marginTop: "10px" }}>
-                {
-                    selectArticles.length > 0 ? selectArticles.map(el => {
-                        return (
-                            <div key={1} className="element">
-                                <ShortArticles />
-                            </div>
-                        )
-                    }) : <div key={1} className="element">
-                        <FlexboxGrid justify="center">
-                            <p>no data</p>
-                        </FlexboxGrid>
+        <div style={{ width: "100%", height: "650px", backgroundColor: "#ffe9e5", overflow: "hidden" }}>
+            <div style={{ position: "relative", zIndex: 1, marginTop: "20px" }}>
+                <FlexboxGrid justify="center">
+                    <div style={{ width: "250px", padding: "10px", borderRadius: "10px", marginTop: "20px", backgroundColor: "white" }}>
+                        <button style={{ background: "none", padding: "0px" }}><img src={Lente} style={{ width: "25px", height: "25px" }} /></button>
+                        <img className={classNames({ dontShow: search, searchShow: true })} src={Scritta} style={{ width: "180px", height: "30px", marginTop: "4px", marginLeft: "10px" }} />
                     </div>
-                }
-            </Slider>
-            <div style={{ textAlign: "center", paddingBottom: "20px" }}>
-                <button className="button" onClick={() => slider.current.slickPrev()} style={{ marginTop: "40px", background: "none", marginRight: "10px" }}>
-                    <img className="btnFreccia" src={FreccaSinistra} />
-                </button>
-                <button className="button" onClick={() => slider.current.slickNext()} style={{ background: "none" }}>
-                    <img className="btnFreccia" src={FreccaDestra} />
-                </button>
+                </FlexboxGrid>
+
+                <FlexboxGrid justify="center">
+                    <input onChange={(e) => { setSearchValue(e.target.value); changeInput(e) }} onBlur={() => {
+                        if (searchValue === '')
+                            setSearch(false)
+
+                        setShowBoxTags(true)
+                    }} onFocus={() => {
+                        setSearch(true)
+
+                        if (searchValue !== '')
+                            setShowBoxTags(false)
+                    }} style={{ fontSize: "20px" }} id="searchArticles" value={searchValue} />
+                </FlexboxGrid>
+
+                <FlexboxGrid justify="center" style={{ position: "relative", zIndex: "1" }}>
+                    <div id="boxTags" className={classNames({ dontShow: showBoxTags })}>
+                        {
+                            filterTags.map(e => {
+
+                                return (
+                                    <button onClick={el => aggiungiTag(el)} className={classNames({ selectTag: true })} id={e}><b id={e}>#{e}</b></button>
+                                )
+                            })
+                        }
+                    </div>
+                </FlexboxGrid>
+
+                <FlexboxGrid justify="center">
+                    <div style={{ width: "auto", padding: "10px", position: "relative", top: "-100px", backgroundColor: "white", borderRadius: "180px", paddingLeft: "15px", paddingRight: "5px" }}>
+                        {
+                            selectTags.map(el => {
+                                return (
+                                    <div style={{ display: "inline", backgroundColor: "#ffe9e5", padding: "5px", borderRadius: "180px", marginRight: "10px", paddingLeft: "10px", paddingRight: "10px" }}>
+                                        <b>#{el}</b>
+                                        <button style={{ background: "none", position: "relative", zIndex: cambioZIndex, top: "-1px", fontSize: "15px", padding: "1px", paddingLeft: "5px", paddingRight: "5px", paddingBottom: "2px", marginLeft: "6px", height: "24px", backgroundColor: "#2d2c40", color: "white", borderRadius: "20px", outline: "none" }} onClick={e => { setSelectTags(selectTags.filter(ta => ta !== e.target.id)); console.log("cliccato") }} id={el}>
+                                            x
+                                        </button>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                </FlexboxGrid>
+
+                <div style={{ marginTop: "-80px", height: "350px" }}>
+                    <Slider ref={c => slider.current = c} {...settings} style={{ position: "relative", zIndex: "0" }}>
+                        {
+                            selectArticles.length > 0 ? selectArticles.map(el => {
+                                return (
+                                    <div key={1} className="element">
+                                        <ShortArticles articles={el} />
+                                    </div>
+                                )
+                            }) : <div key={1} className="element">
+                                <FlexboxGrid justify="center">
+                                    <img src={noDataArticles} style={{ width: "340px", borderRadius: "20px" }} />
+                                </FlexboxGrid>
+                                <FlexboxGrid justify="center">
+                                    <img src={scrittaNoDataArticles} style={{ width: "250px", marginTop: "20px" }} />
+                                </FlexboxGrid>
+                            </div>
+                        }
+                    </Slider>
+                </div>
+
+
+
+                <div style={{ textAlign: "center", paddingBottom: "20px" }}>
+                    <button className="button" onClick={() => slider.current.slickPrev()} style={{ marginTop: "40px", background: "none", marginRight: "10px" }}>
+                        <img className="btnFreccia" src={FreccaSinistra} />
+                    </button>
+                    <button className="button" onClick={() => slider.current.slickNext()} style={{ background: "none" }}>
+                        <img className="btnFreccia" src={FreccaDestra} />
+                    </button>
+                </div>
+
             </div>
+            <img src={backgroundEquazioniCarousel} style={{ position: "relative", top: "-570px", width: "100%", height: "100%", zIndex: "0", opacity: "60%" }} />
         </div>
     )
 }

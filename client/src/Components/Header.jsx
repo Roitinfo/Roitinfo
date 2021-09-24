@@ -21,6 +21,8 @@ import imgPassword from '../img/IMG_1416.png'
 import imgAccount from '../img/IMG_1420.png'
 import backgroundRegistrati from '../img/IMG_1421.png'
 import imgRegistrati from '../img/IMG_1422.png'
+import backgroundFreccia from '../img/IMG_1423.png'
+import imgFreccia from '../img/IMG_1424.png'
 
 export default function Header() {
 
@@ -180,20 +182,18 @@ export default function Header() {
 
                         <img src={imgAccount} style={{ width: "160px", height: "20px", marginTop: "-110px" }} />
 
-                        <FlexboxGrid justify="start" style={{ marginTop: "-42px", marginBottom: "-20px" }}>
-                            <button id="btnRegistrati" style={{ width: "100px", padding: "0px", borderRadius: "20px", position: "relative", zIndex: "1", background: "none", outline: "none" }}>
+                        <FlexboxGrid justify="start" style={{ marginTop: "-42px", marginBottom: "-20px", height: "35px" }}>
+                            <button onClick={() => {setShowModal1(false); setShowModal2(true)}} id="btnRegistrati" style={{ width: "100px", padding: "0px", borderRadius: "20px", position: "relative", zIndex: "1", background: "none", outline: "none" }}>
                                 <img id="backgroundRegistrati" src={backgroundRegistrati} />
                                 <img id="imgRegistrati" src={imgRegistrati} />
                             </button>
                         </FlexboxGrid>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button loading={loading} onClick={login} appearance="primary">
-                            Login
-                        </Button>
-                        <Button onClick={() => { setShowModal1(false); reset() }} appearance="subtle">
-                            Cancel
-                        </Button>
+                    <Modal.Footer style={{height: "50px"}}>
+                        <button className="btnInvio" onClick={login}>
+                            <img className="backgroundFreccia" src={backgroundFreccia} />
+                            <img className="imgFreccia" src={imgFreccia} />
+                        </button>
                     </Modal.Footer>
                 </div>
             </Modal>

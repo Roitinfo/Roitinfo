@@ -22,7 +22,7 @@ export default function Home() {
         <div>
             <Header />
 
-            <FlexboxGrid justify="center" style={{ marginTop: "40px", marginBottom: "60px" }}>
+            <FlexboxGrid justify="center" style={{ marginTop: "40px", marginBottom: "80px" }}>
                 <Link to="/articoli">
                     <button className="btnPrincipali">
                         <img src={imgArticoli} style={{ width: "300px", height: "320px" }} />

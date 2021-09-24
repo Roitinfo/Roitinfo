@@ -1,11 +1,7 @@
-.element {
-    border: 1px solid black;
-}
-
 .btnFreccia {
     width: 30px;
     height: 30px;
-    transition: all 0.3s;
+    transition: all 0.1s;
 }
 
 .btnFreccia:hover {
@@ -51,7 +47,6 @@
 }
 
 #boxTags {
-    border: 1px solid black;
     border-radius: 20px;
     width: 210px;
     height: 100px;
@@ -60,15 +55,13 @@
     padding: 10px;
     padding-top: 5px;
     visibility: show;
-}
 
-@keyframes slideOpacity {
-    0% {
-        opacity: 0%;
-    }
-    100% {
-        opacity: 100%;
-    }
+    background-color: white;
+
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.18); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.18);
+
+    transition: all 0.3s;
 }
 
 .selectTag {
