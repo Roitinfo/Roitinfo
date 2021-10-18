@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useContext, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import AuthContext from '../Context/AuthContext'
 import axios from 'axios'
 import Cookie from 'js-cookie'
@@ -14,15 +14,21 @@ import BtnLogin from '../img/logIn.png'
 import nomeSito from '../img/IMG_1377.png'
 import descrizioneSito from '../img/IMG_1376.png'
 import scrittaLogin from '../img/IMG_1419.png'
+import scrittaRegistrazione from '../img/Untitled_Artwork-18.png'
 import imgClose from '../img/IMG_1425.png'
 import backgroundInput from '../img/IMG_1417.png'
 import imgEmail from '../img/IMG_1418.png'
 import imgPassword from '../img/IMG_1416.png'
 import imgAccount from '../img/IMG_1420.png'
-import backgroundRegistrati from '../img/IMG_1421.png'
-import imgRegistrati from '../img/IMG_1422.png'
-import backgroundFreccia from '../img/IMG_1423.png'
-import imgFreccia from '../img/IMG_1424.png'
+import btnRegistrati from '../img/Untitled_Artwork-3.png'
+import btnFreccia from '../img/Untitled_Artwork-1.png'
+import imgName from '../img/Untitled_Artwork-10.png'
+import imgSurname from '../img/Untitled_Artwork-8.png'
+import imgConfermaPassword from '../img/Untitled_Artwork-2.png'
+import scrittaAdmin from '../img/Untitled_Artwork-41.png'
+import backgroundAdmin from '../img/Untitled_Artwork-42.png'
+import imgAdmin from '../img/Untitled_Artwork-44.png'
+import casellaAdmin from '../img/Untitled_Artwork-43.png'
 
 export default function Header() {
 
@@ -39,7 +45,9 @@ export default function Header() {
     const [password, setPassword] = useState('')
     const [controlloPsw, setControlloPsw] = useState('')
     const [passwordAdmin, setPasswordAdmin] = useState('')
-    const [admin, setAdmin] = useState(false)
+    const [admin, setAdmin] = useState('')
+
+    const location = useLocation()
 
     const login = () => {
         setLoading(true)
@@ -117,8 +125,17 @@ export default function Header() {
         setControlloPsw('')
     }
 
+    const [showScrittaName, setShowScrittaName] = useState(false)
+    const [showScrittaSurname, setShowScrittaSurname] = useState(false)
     const [showScrittaEmail, setShowScrittaEmail] = useState(false)
     const [showScrittaPass, setShowScrittaPass] = useState(false)
+    const [showScrittaConfermaPass, setShowScrittaConfermaPass] = useState(false)
+    const [showScrittaAdmin, setShowScrittaAdmin] = useState(false)
+    const [showBoxAdmin, setShowBoxAdmin] = useState(true)
+
+    useEffect(() => {
+        console.log(showScrittaEmail)
+    }, [showScrittaEmail])
 
     return (
         <div id="header">
@@ -136,13 +153,17 @@ export default function Header() {
                 }
             </FlexboxGrid>
 
-            <FlexboxGrid justify="center">
-                <img src={nomeSito} style={{ width: "600px", height: "100px" }} />
-            </FlexboxGrid>
+            {
+                location.pathname === '/' ? <div>
+                    <FlexboxGrid justify="center">
+                        <img src={nomeSito} style={{ width: "600px", height: "100px" }} />
+                    </FlexboxGrid>
 
-            <FlexboxGrid justify="center" style={{ marginTop: "-40px" }}>
-                <img src={descrizioneSito} style={{ width: "550px", height: "90px" }} />
-            </FlexboxGrid>
+                    <FlexboxGrid justify="center" style={{ marginTop: "-40px" }}>
+                        <img src={descrizioneSito} style={{ width: "550px", height: "90px", marginBottom: "15px" }} />
+                    </FlexboxGrid>
+                </div> : ''
+            }
 
 
 
@@ -153,7 +174,7 @@ export default function Header() {
                     <Modal.Header closeButton={false} style={{ height: "30px" }}>
                         <Modal.Title><img src={scrittaLogin} style={{ width: "70px", height: "30px" }} /></Modal.Title>
                         <FlexboxGrid justify="end" style={{ marginTop: "-28px" }}>
-                            <button style={{ padding: "0px", background: "none" }} onClick={() => setShowModal1(false)}>
+                            <button style={{ padding: "0px", background: "none" }} onClick={() => {setShowModal1(false); reset()}}>
                                 <img src={imgClose} id="imgClose" />
                             </button>
                         </FlexboxGrid>
@@ -162,7 +183,7 @@ export default function Header() {
                         {/*     INPUT EMAIL LOGIN     */}
                         <div>
                             <img src={backgroundInput} style={{ width: "100%", height: "45px" }} />
-                            <img className={classNames({ scrittaEmail: !showScrittaEmail, dontShow: showScrittaEmail })} src={imgEmail} style={{ width: "55px", height: "20px", marginTop: "-69px", marginLeft: "20px" }} />
+                            <img src={imgEmail} className={classNames({ dontShow: showScrittaEmail })} style={{ width: "55px", height: "20px", marginTop: "-69px", marginLeft: "20px", transition: "all 0.3s" }} />
                             <input onBlur={() => {
                                 if (email === '')
                                     setShowScrittaEmail(false)
@@ -173,7 +194,7 @@ export default function Header() {
                         {/*     INPUT PASSWORD LOGIN     */}
                         <div style={{ marginTop: "-60px" }}>
                             <img src={backgroundInput} style={{ width: "100%", height: "45px" }} />
-                            <img className={classNames({ scrittaPass: !showScrittaPass, dontShow: showScrittaPass })} src={imgPassword} style={{ width: "100px", height: "20px", marginTop: "-69px", marginLeft: "20px" }} />
+                            <img className={classNames({ dontShow: showScrittaPass })} src={imgPassword} style={{ width: "100px", height: "20px", marginTop: "-69px", marginLeft: "20px", transition: "all 0.3s" }} />
                             <input type="password" onBlur={() => {
                                 if (password === '')
                                     setShowScrittaPass(false)
@@ -183,46 +204,116 @@ export default function Header() {
                         <img src={imgAccount} style={{ width: "160px", height: "20px", marginTop: "-110px" }} />
 
                         <FlexboxGrid justify="start" style={{ marginTop: "-42px", marginBottom: "-20px", height: "35px" }}>
-                            <button onClick={() => {setShowModal1(false); setShowModal2(true)}} id="btnRegistrati" style={{ width: "100px", padding: "0px", borderRadius: "20px", position: "relative", zIndex: "1", background: "none", outline: "none" }}>
-                                <img id="backgroundRegistrati" src={backgroundRegistrati} />
-                                <img id="imgRegistrati" src={imgRegistrati} />
+                            <button onClick={() => { setShowModal1(false); setShowModal2(true) }} id="btnRegistrati" style={{ width: "100px", padding: "0px", borderRadius: "20px", position: "relative", zIndex: "1", background: "none", outline: "none" }}>
+                                <img src={btnRegistrati} />
                             </button>
                         </FlexboxGrid>
                     </Modal.Body>
-                    <Modal.Footer style={{height: "50px"}}>
-                        <button className="btnInvio" onClick={login}>
-                            <img className="backgroundFreccia" src={backgroundFreccia} />
-                            <img className="imgFreccia" src={imgFreccia} />
+                    <Modal.Footer style={{ height: "50px" }}>
+                        <button className="btnInvio" onClick={login} style={{marginTop: "40px"}}>
+                            <img src={btnFreccia} />
                         </button>
                     </Modal.Footer>
                 </div>
             </Modal>
 
 
+
             {/* Modal per la registrazione */}
             <Modal size="xs" show={showModal2} onHide={() => { setShowModal2(false); reset() }}>
-                <Modal.Header>
-                    <Modal.Title>Registrati</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Input value={name} onChange={e => setName(e)} placeholder="Nome" />
-                    <Input value={surname} onChange={e => setSurname(e)} className="input" placeholder="Cognome" />
-                    <Input value={email} onChange={e => setEmail(e)} className="input" placeholder="Email" type="email" />
-                    <Input value={password} onChange={e => setPassword(e)} className="inpu" id="inputPsw" placeholder="Password" type="password" />
-                    <Input value={controlloPsw} onChange={e => setControlloPsw(e)} className="input" placeholder="Conferma password" type="password" />
-                    <Checkbox className="input" onChange={(value, checked) => { setAdmin(checked); checked ? setAdmin(checked) : setPasswordAdmin('') }}> Admin</Checkbox>
-                    {
-                        admin ? <Input value={passwordAdmin} onChange={e => setPasswordAdmin(e)} className="input" placeholder="Password admin" type="password" /> : ''
-                    }
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={register} loading={loading} appearance="primary">
-                        Registrati
-                    </Button>
-                    <Button onClick={() => { setShowModal2(false); reset() }} appearance="subtle">
-                        Cancel
-                    </Button>
-                </Modal.Footer>
+                <div style={{ background: "#3f6493", margin: "-25px", borderRadius: "20px", padding: "20px" }}>
+                    <Modal.Header closeButton={false} style={{ height: "30px" }}>
+
+                        <Modal.Title><img src={scrittaRegistrazione} style={{ width: "180px", height: "30px" }} /></Modal.Title>
+
+                        <FlexboxGrid justify="end" style={{ marginTop: "-28px" }}>
+                            <button style={{ padding: "0px", background: "none" }} onClick={() => {setShowModal2(false); reset()}}>
+                                <img src={imgClose} id="imgClose" />
+                            </button>
+                        </FlexboxGrid>
+                    </Modal.Header>
+                    <Modal.Body style={{ marginTop: "20px", overflow: "hidden", height: "320px" }}>
+
+                        {/*     INPUT NAME     */}
+                        <div className="sizeBoxInput">
+                            <img src={backgroundInput} style={{ width: "100%", height: "45px" }} />
+                            <img src={imgName} className={classNames({ dontShow: showScrittaName })} style={{ width: "62px", height: "20px", marginTop: "-69px", marginLeft: "20px", transition: "all 0.3s" }} />
+                            <input autoComplete="off" onBlur={() => {
+                                if (name === '')
+                                    setShowScrittaName(false)
+                            }} onFocus={() => setShowScrittaName(true)} className="inputEmail" style={{ fontSize: "20px", paddingLeft: "20px" }} value={name} onChange={e => setName(e.target.value)} type="text" />
+                        </div>
+
+                        {/*     INPUT SURNAME     */}
+                        <div className="sizeBoxInput">
+                            <img src={backgroundInput} style={{ width: "100%", height: "45px" }} />
+                            <img src={imgSurname} className={classNames({ dontShow: showScrittaSurname })} style={{ width: "100px", height: "24px", marginTop: "-69px", marginLeft: "20px", transition: "all 0.3s" }} />
+                            <input autoComplete="off" onBlur={() => {
+                                if (surname === '')
+                                    setShowScrittaSurname(false)
+                            }} onFocus={() => setShowScrittaSurname(true)} className="inputEmail" style={{ fontSize: "20px", paddingLeft: "20px" }} value={surname} onChange={e => setSurname(e.target.value)} type="text" />
+                        </div>
+
+                        {/*     INPUT EMAIL LOGIN     */}
+                        <div className="sizeBoxInput">
+                            <img src={backgroundInput} style={{ width: "100%", height: "45px" }} />
+                            <img src={imgEmail} className={classNames({ dontShow: showScrittaEmail })} style={{ width: "55px", height: "20px", marginTop: "-69px", marginLeft: "20px", transition: "all 0.3s" }} />
+                            <input onBlur={() => {
+                                if (email === '')
+                                    setShowScrittaEmail(false)
+                            }} onFocus={() => setShowScrittaEmail(true)} className="inputEmail" style={{ fontSize: "20px", paddingLeft: "20px" }} value={email} onChange={e => setEmail(e.target.value)} type="email" />
+                        </div>
+
+
+                        {/*     INPUT PASSWORD LOGIN     */}
+                        <div className="sizeBoxInput">
+                            <img src={backgroundInput} style={{ width: "100%", height: "45px" }} />
+                            <img className={classNames({ dontShow: showScrittaPass })} src={imgPassword} style={{ width: "100px", height: "20px", marginTop: "-69px", marginLeft: "20px", transition: "all 0.3s" }} />
+                            <input type="password" onBlur={() => {
+                                if (password === '')
+                                    setShowScrittaPass(false)
+                            }} onFocus={() => setShowScrittaPass(true)} className="inputEmail" style={{ fontSize: "20px", paddingLeft: "20px" }} value={password} onChange={e => setPassword(e.target.value)} />
+                        </div>
+
+
+                        {/*     INPUT PASSWORD LOGIN     */}
+                        <div className="sizeBoxInput">
+                            <img src={backgroundInput} style={{ width: "100%", height: "45px" }} />
+                            <img className={classNames({ dontShow: showScrittaConfermaPass })} src={imgConfermaPassword} style={{ width: "195px", height: "28px", marginTop: "-69px", marginLeft: "20px", transition: "all 0.3s" }} />
+                            <input type="password" onBlur={() => {
+                                if (controlloPsw === '')
+                                    setShowScrittaConfermaPass(false)
+                            }} onFocus={() => setShowScrittaConfermaPass(true)} className="inputEmail" style={{ fontSize: "20px", paddingLeft: "20px" }} value={controlloPsw} onChange={e => setControlloPsw(e.target.value)} />
+                        </div>
+
+                        <div style={{ marginTop: "20px" }}>
+                            <button onClick={() => setShowBoxAdmin(!showBoxAdmin)} style={{ background: "none", padding: "0px", outline: "none" }}>
+                                <img src={casellaAdmin} style={{ width: "20px" }} />
+                            </button>
+                            <img src={imgAdmin} style={{ width: "60px", marginLeft: "15px" }} />
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer style={{ height: "50px" }}>
+                        <div className={classNames({dontShowDisplay: showBoxAdmin})}>
+                            <FlexboxGrid justify="start">
+                                <img src={backgroundAdmin} style={{ width: "200px" }} />
+                            </FlexboxGrid>
+                            <FlexboxGrid justify="start">
+                                <img src={scrittaAdmin} className={classNames({ dontShow: showScrittaAdmin })} style={{ width: "160px", marginTop: "-30px", marginLeft: "15px", transition: "all 0.3s" }} />
+                            </FlexboxGrid>
+                            <FlexboxGrid justify="start">
+                                <input autoComplete="off" type="password" onBlur={() => {
+                                    if (admin === '')
+                                        setShowScrittaAdmin(false)
+                                }} onFocus={() => setShowScrittaAdmin(true)} style={{ fontSize: "20px", paddingLeft: "20px", marginTop: "-35px", width: "200px", background: "none", outline: "none", border: "none" }} value={admin} onChange={e => setAdmin(e.target.value)} />
+                            </FlexboxGrid>
+                        </div>
+
+                        <button className="btnInvio" onClick={register} style={{position: "relative", zIndex: "2"}}>
+                            <img src={btnFreccia} />
+                        </button>
+                    </Modal.Footer>
+                </div>
             </Modal>
         </div>
     )

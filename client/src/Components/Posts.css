@@ -11,20 +11,6 @@
     -moz-box-shadow: -2px 16px 53px 4px rgba(0,0,0,0.22);
 }
 
-.linkArticolo {
-    display: inline-table;
-
-    width: 300px;
-    height: 250px;
-
-    margin-left: 5%;
-    margin-top: 50px;
-}
-
-.linkArticolo:hover {
-    text-decoration: none;
-}
-
 .description {
     height: 80px;
 

@@ -5,8 +5,6 @@
 
     padding-top: 15px;
     padding-left: 12px;
-
-    padding-bottom: 15px;
 }
 
 #nomeSito {
@@ -106,10 +104,18 @@
     border: none;
 }
 
-.scrittaEmail, .scrittaPass {
+.scrittaInput {
     opacity: 100%;
 
     transition: all 0.3s;
+}
+
+.dontShow {
+    opacity: 0%;
+}
+
+.dontShowDisplay {
+    opacity: 0%;
 }
 
 #backgroundRegistrati {
@@ -136,12 +142,14 @@
     transition: all 0.3s;
 }
 
-#btnRegistrati:hover #backgroundRegistrati {
-    width: 102px;
+#btnRegistrati img {
+    width: 100px;
+
+    transition: all 0.3s;
 }
 
-#btnRegistrati:hover #imgRegistrati {
-    margin-left: -87px;
+#btnRegistrati:hover img {
+    width: 110px;
 }
 
 .btnInvio {
@@ -151,34 +159,25 @@
 
     outline: none;
 
-    transition: all 0.3s;
-}
-
-.backgroundFreccia {
-    width: 40px;
-    height: 40px;
+    margin-top: -10px;
 
     transition: all 0.3s;
 }
 
-.imgFreccia {
-    width: 25px;
-    height: 20px;
+.btnInvio img {
+    width: 60px;
 
-    margin-left: -32px;
+    margin-top: -70px;
 
     transition: all 0.3s;
 }
 
-.btnInvio:hover {
-    padding-right: 14px;
+.btnInvio:hover img {
+    width: 63px;
 }
 
-.btnInvio:hover .backgroundFreccia {
-    width: 45px;
-    height: 45px;
-}
+.sizeBoxInput {
+    height: 48px;
 
-.btnInvio:hover .imgFreccia {
-    margin-left: -37px;
+    margin-bottom: 5px;
 }

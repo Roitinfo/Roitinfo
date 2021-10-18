@@ -12,8 +12,8 @@ import 'slick-carousel/slick/slick-theme.css'
 
 import FreccaDestra from '../img/Untitled_Artwork-28.png'
 import FreccaSinistra from '../img/Untitled_Artwork-29.png'
-import Lente from '../img/IMG_1409.png'
 import Scritta from '../img/IMG_1408.png'
+import Lente from '../img/IMG_1409.png'
 import outlineSearchInput from '../img/Untitled_Artwork-33.png'
 import noDataArticles from '../img/Untitled_Artwork-39.png'
 import scrittaNoDataArticles from '../img/Untitled_Artwork-40.png'
@@ -123,13 +123,14 @@ function Carousel() {
             <div style={{ position: "relative", zIndex: 1, marginTop: "20px" }}>
                 <FlexboxGrid justify="center">
                     <div style={{ width: "250px", padding: "10px", borderRadius: "10px", marginTop: "20px", backgroundColor: "white" }}>
-                        <button style={{ background: "none", padding: "0px" }}><img src={Lente} style={{ width: "25px", height: "25px" }} /></button>
-                        <img className={classNames({ dontShow: search, searchShow: true })} src={Scritta} style={{ width: "180px", height: "30px", marginTop: "4px", marginLeft: "10px" }} />
+                        <img src={Lente} style={{ width: "25px", height: "25px" }} />
+                        <img src={Scritta} id="searchShow" className={classNames({ dontShow: search })} style={{ width: "180px", height: "30px", marginTop: "4px", marginLeft: "10px", position: "relative", zIndex: "2", transition: "all 0.3s" }} />
                     </div>
                 </FlexboxGrid>
 
+                {/* Barra di ricerca */}
                 <FlexboxGrid justify="center">
-                    <input onChange={(e) => { setSearchValue(e.target.value); changeInput(e) }} onBlur={() => {
+                    <input autoComplete="off" onChange={(e) => { setSearchValue(e.target.value); changeInput(e) }} onBlur={() => {
                         if (searchValue === '')
                             setSearch(false)
 
@@ -139,7 +140,7 @@ function Carousel() {
 
                         if (searchValue !== '')
                             setShowBoxTags(false)
-                    }} style={{ fontSize: "20px" }} id="searchArticles" value={searchValue} />
+                    }} style={{ fontSize: "20px", position: "relative", zIndex: "4", background: "none" }} className="searchArticles" value={searchValue} />
                 </FlexboxGrid>
 
                 <FlexboxGrid justify="center" style={{ position: "relative", zIndex: "1" }}>
@@ -178,7 +179,7 @@ function Carousel() {
                             selectArticles.length > 0 ? selectArticles.map(el => {
                                 return (
                                     <div key={1} className="element">
-                                        <ShortArticles articles={el} />
+                                        <ShortArticles articles={el} center={true} />
                                     </div>
                                 )
                             }) : <div key={1} className="element">

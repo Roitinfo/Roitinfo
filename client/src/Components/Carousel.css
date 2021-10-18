@@ -21,7 +21,7 @@
     top: -42px;
 }
 
-#searchArticles {
+.searchArticles {
     width: 213px;
     height: 55px;
     background: none;
@@ -33,12 +33,13 @@
     padding-left: 10px;
 }
 
-#searchArticles:focus {
+.searchArticles:focus {
     outline: none;
 }
 
 .searchShow {
     opacity: 100%;
+    
     transition: all 0.3s;
 }
 

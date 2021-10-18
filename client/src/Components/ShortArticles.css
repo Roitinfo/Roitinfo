@@ -9,3 +9,14 @@
     width: 37px;
     height: 37px;
 }
+
+.linkArticolo {
+    display: inline-table;
+
+    width: 300px;
+    height: 250px;
+
+    margin: 2%;
+
+    margin-top: 50px;
+}
