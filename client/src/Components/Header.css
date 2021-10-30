@@ -35,6 +35,18 @@
     margin-right: 50px;
 }
 
+#btnProfilo img {
+    width: 70px;
+    height: 38px;
+
+    transition: all 0.3s;
+}
+
+#btnProfilo img:hover {
+    width: 72px;
+    height: 40px;
+}
+
 #inputPsw {
     margin-top: 20px;
 }

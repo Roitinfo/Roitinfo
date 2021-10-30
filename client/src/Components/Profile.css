@@ -3,7 +3,7 @@
 }
 
 #nomeUser {
-    font-size: 12px;
+    font-size: 100%;
 }
 
 #nomeUser button {
@@ -90,23 +90,6 @@
 
 #impostazioniUser {
     padding: 20px;
-}
-
-#nomeCognome {
-    padding: 10px;
-
-    border-radius: 20px;
-
-    width: auto;
-
-    font-size: 20px;
-
-    margin-bottom: 40px;
-
-    text-align: center;
-
-    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.38); 
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.38);
 }
 
 #cambioNome, #cambioCognome, #cambioPassword {

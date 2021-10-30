@@ -3,8 +3,20 @@ import AuthContext from '../Context/AuthContext'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
+import './ImpostazioniUser.css'
+import backgroundInput from '../img/Impostazioni_profilo/Untitled_Artwork-21.png'
+import imgCambiaNome from '../img/Impostazioni_profilo/Untitled_Artwork-37.png'
+import imgSalva from '../img/Impostazioni_profilo/Untitled_Artwork.png'
+import imgCambiaCognomeBianco from '../img/Impostazioni_profilo/Untitled_Artwork-32.png'
+import imgCambiaCognomeBlu from '../img/Impostazioni_profilo/Untitled_Artwork-31.png'
+import imgCambiaPswBianco from '../img/Impostazioni_profilo/Untitled_Artwork-20.png'
+import imgPswVecchia from '../img/Impostazioni_profilo/Untitled_Artwork-24.png'
+import imgNuovaPsw from '../img/Impostazioni_profilo/Untitled_Artwork-25.png'
+import imgConfermaPsw from '../img/Impostazioni_profilo/Untitled_Artwork-26.png'
+
 import { Input, Button, FlexboxGrid, Alert } from 'rsuite'
 import Cookies from 'js-cookie'
+import classNames from 'classnames'
 
 export default function ImpostazioniUser() {
     const { user, setUser, urlServer } = useContext(AuthContext)
@@ -29,11 +41,12 @@ export default function ImpostazioniUser() {
         if (name === '') {
             Alert.error("Nome non valio")
             setLoadingNome(false)
+            setFocusNome(false)
 
             return
         }
 
-        axios.post(`${urlServer}/user/cambio-nome`, {id: user._id, name}).then(res => {
+        axios.post(`${urlServer}/user/cambio-nome`, { id: user._id, name }).then(res => {
             console.log(res)
 
             user.name = name
@@ -43,6 +56,7 @@ export default function ImpostazioniUser() {
             setUser(user)
             setNameGrande(name)
             setName('')
+            setFocusNome(false)
 
             history.push('/profile')
 
@@ -56,11 +70,11 @@ export default function ImpostazioniUser() {
         if (surname === '') {
             Alert.error('Cognome non valido')
             setLoadingCognome(false)
-            
+
             return
         }
 
-        axios.post(`${urlServer}/user/cambio-cognome`, {id: user._id, surname}).then(res => {
+        axios.post(`${urlServer}/user/cambio-cognome`, { id: user._id, surname }).then(res => {
             console.log(res)
 
             user.surname = surname
@@ -68,6 +82,7 @@ export default function ImpostazioniUser() {
             setUser(user)
             setSurnameGrande(surname)
             setSurname('')
+            setFocusCognome(false)
 
             history.push('/profile')
 
@@ -92,15 +107,18 @@ export default function ImpostazioniUser() {
             return
         }
 
-        axios.post(`${urlServer}/user/cambio-password`, {id: user._id, nuova: nuovaPsw, vecchia: vecchiaPsw}).then(res => {
+        axios.post(`${urlServer}/user/cambio-password`, { id: user._id, nuova: nuovaPsw, vecchia: vecchiaPsw }).then(res => {
             console.log(res.data)
 
             if (res.data === false) {
                 Alert.error("Password vecchia non valida")
                 setLoadingPsw(false)
                 setVecchiaPsw('')
+                setFocusVecchiaPsw(false)
+                setFocusNuovaPsw(false)
+                setFocusConfermaPsw(false)
 
-                return 
+                return
             }
 
             setLoadingPsw(false)
@@ -113,37 +131,93 @@ export default function ImpostazioniUser() {
 
 
 
+    //miliardi di condizioni onFucs!
+    const [focusNome, setFocusNome] = useState(false)
+    const [focusCognome, setFocusCognome] = useState(false)
+    const [focusVecchiaPsw, setFocusVecchiaPsw] = useState(false)
+    const [focusNuovaPsw, setFocusNuovaPsw] = useState(false)
+    const [focusConfermaPsw, setFocusConfermaPsw] = useState(false)
+
+
+
     return (
         <div id="impostazioniUser">
-            <p id="nomeCognome">
-                {nameGrande} {surnameGrande}
-            </p>
+            <FlexboxGrid justify="center">
+                <div id="cambioNome" className="backgroundSectionProfile">
+                    <p style={{ color: "white" }}>Cambia nome</p>
+                    <img src={backgroundInput} style={{ width: "100%", height: "50px", marginTop: "30px" }} />
+                    <img src={imgCambiaNome} className={classNames({ dontShow: focusNome, transitionInput: true })} style={{ width: "42%", marginTop: "-70px", marginLeft: "10px" }} />
+
+                    <Input value={name} onChange={e => setName(e)} style={{ width: "100%", marginTop: "-61px", position: "relative", zIndex: "2", background: "none", border: "none" }} onFocus={() => setFocusNome(true)} onBlur={() => {
+                        if (name === '')
+                            setFocusNome(false)
+                    }} />
+
+                    <FlexboxGrid justify="end" style={{ marginTop: "10px" }}>
+                        <button className="btnSalvaImpostazioni" onClick={cambiaNome}>
+                            <img src={imgSalva} />
+                        </button>
+                    </FlexboxGrid>
+                </div>
+            </FlexboxGrid>
 
             <FlexboxGrid justify="center">
-                <div id="cambioNome">
-                    <p>Cambia nome</p>
-                    <Input value={name} onChange={e => setName(e)} placeholder="Cambia nome" />
-                    <Button loading={loadingNome} onClick={cambiaNome} size="sm" appearance="primary">Salva</Button>
+                <div id="cambioCognome" className="backgroundSectionProfile">
+                    <p style={{ color: "white" }}>Cambia cognome</p>
+                    <img src={backgroundInput} style={{ width: "100%", height: "50px", marginTop: "30px" }} />
+                    <img src={imgCambiaCognomeBlu} className={classNames({ dontShow: focusCognome, transitionInput: true })} style={{ width: "50%", marginTop: "-70px", marginLeft: "10px" }} />
+
+                    <Input value={surname} onChange={e => setSurname(e)} style={{ width: "100%", marginTop: "-61px", position: "relative", zIndex: "2", background: "none", border: "none" }} onFocus={() => setFocusCognome(true)} onBlur={() => {
+                        if (surname === '')
+                            setFocusCognome(false)
+                    }} />
+
+                    <FlexboxGrid justify="end" style={{ marginTop: "10px" }}>
+                        <button className="btnSalvaImpostazioni" onClick={cambiaCognome}>
+                            <img src={imgSalva} />
+                        </button>
+                    </FlexboxGrid>
                 </div>
             </FlexboxGrid>
+
             <FlexboxGrid justify="center">
-                <div id="cambioCognome">
-                    <p>Cambia cognome</p>
-                    <Input value={surname} onChange={e => setSurname(e)} placeholder="Cambia cognome" />
-                    <Button loading={loadingCognome} onClick={cambiaCognome} size="sm" appearance="primary">Salva</Button>
+                <div id="cambioPassword" className="backgroundSectionProfile">
+                    <p style={{ color: "white" }}>Cambia password</p>
+
+
+                    <img src={backgroundInput} style={{ width: "100%", height: "50px", marginTop: "30px" }} />
+                    <img src={imgPswVecchia} className={classNames({dontShow: focusVecchiaPsw, focusVecchiaPsw, transitionInput: true})} style={{ width: "50%", marginTop: "-75px", marginLeft: "10px" }} />
+                    <Input value={vecchiaPsw} onChange={e => setVecchiaPsw(e)} style={{ width: "100%", marginTop: "-65px", position: "relative", zIndex: "2", background: "none", border: "none" }} onFocus={() => setFocusVecchiaPsw(true)} onBlur={() => {
+                        if (vecchiaPsw === '')
+                            setFocusVecchiaPsw(false)
+                    }} />
+
+                    <img src={backgroundInput} style={{ width: "100%", height: "50px", marginTop: "30px" }} />
+                    <img src={imgNuovaPsw} className={classNames({dontShow: focusNuovaPsw, focusNuovaPsw, transitionInput: true})} style={{ width: "50%", marginTop: "-75px", marginLeft: "10px" }} />
+                    <Input value={nuovaPsw} onChange={e => setNuovaPsw(e)} style={{ width: "100%", marginTop: "-65px", position: "relative", zIndex: "2", background: "none", border: "none" }} onFocus={() => setFocusNuovaPsw(true)} onBlur={() => {
+                        if (nuovaPsw === '')
+                            setFocusNuovaPsw(false)
+                    }} />
+
+                    <img src={backgroundInput} style={{ width: "100%", height: "50px", marginTop: "30px" }} />
+                    <img src={imgConfermaPsw} className={classNames({dontShow: focusConfermaPsw, transitionInput: true})} style={{ width: "57%", marginTop: "-75px", marginLeft: "10px" }} />
+                    <Input value={confermaNuovaPsw} onChange={e => setConfermaNuovaPsw(e)} style={{ width: "100%", marginTop: "-65px", position: "relative", zIndex: "2", background: "none", border: "none" }} onFocus={() => setFocusConfermaPsw(true)} onBlur={() => {
+                        if (confermaNuovaPsw === '') 
+                            setFocusConfermaPsw(false)
+                    }} />
+
+
+                    <FlexboxGrid justify="end" style={{ marginTop: "10px" }}>
+                        <button className="btnSalvaImpostazioni" onClick={cambiaPassword}>
+                            <img src={imgSalva} />
+                        </button>
+                    </FlexboxGrid>
                 </div>
             </FlexboxGrid>
-            <FlexboxGrid justify="center">
-                <div id="cambioPassword">
-                    <p>Cambia password</p>
-                    <Input value={vecchiaPsw} onChange={e => setVecchiaPsw(e)} type="password" placeholder="Password vecchia" />
-                    <Input value={nuovaPsw} onChange={e => setNuovaPsw(e)} type="password" placeholder="Password nuova" />
-                    <Input value={confermaNuovaPsw} onChange={e => setConfermaNuovaPsw(e)} type="password" placeholder="Conferma password" />
-                    <Button loading={loadingPsw} onClick={cambiaPassword} size="sm" appearance="primary">Salva</Button>
-                </div>
-            </FlexboxGrid>
-            <FlexboxGrid justify="center" style={{marginTop: "30px"}}>
-                <Button appearance="primary" onClick={() => {Cookies.remove('token'); history.push('/')}}>Esci</Button>
+
+
+            <FlexboxGrid justify="center" style={{ marginTop: "30px" }}>
+                <Button appearance="primary" onClick={() => { Cookies.remove('token'); history.push('/') }}>Esci</Button>
             </FlexboxGrid>
         </div>
     )

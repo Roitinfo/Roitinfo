@@ -1,0 +1,27 @@
+.backgroundSectionProfile {
+    background-color: #3f6493;
+
+    min-height: 200px;
+}
+
+.btnSalvaImpostazioni {
+    padding: 0px;
+
+    border-radius: 20px;
+
+    background: none;
+}
+
+.btnSalvaImpostazioni img {
+    width: 85px;
+
+    transition: all 0.3s;
+}
+
+.btnSalvaImpostazioni img:hover {
+    width: 88px;
+}
+
+.transitionInput {
+    transition: all 0.3s;
+}

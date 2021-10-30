@@ -49,7 +49,7 @@ export default function Profile() {
                 break;
 
             case "Modifica":
-                setcontentValue(<ScegliPost onArticleSelected={ (e) => modifyArticle(e.currentTarget.id)}/>)
+                setcontentValue(<ScegliPost onArticleSelected={ (e) => modifyArticle(e)}/>)
                 break;
 
             case "Scrivi":
@@ -86,9 +86,8 @@ export default function Profile() {
             <Header />
 
             <Container>
-                <FlexboxGrid align="middle">
                     <Sidebar id="sidebar">
-                        <Sidenav id="sidenav">
+                        <Sidenav id="sidenav" style={{backgroundColor: "#f3f3f3", marginTop: "50px"}}>
                             <Sidenav.Body>
                                 <Nav>
                                     <Nav.Item onClick={() => option("Impostazioni")}>
@@ -111,9 +110,7 @@ export default function Profile() {
                                 </Nav>
                             </Sidenav.Body>
                         </Sidenav>
-                    </Sidebar>
-
-                </FlexboxGrid>
+                    </Sidebar>                
                 <Content id="content">
                     {contentValue}
                 </Content>

@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import AuthContext from '../Context/AuthContext'
 import axios from 'axios'
 import { Link, useHistory } from 'react-router-dom'
+import ShortArticles from './ShortArticles'
 
 import { FlexboxGrid, Panel, Placeholder, Tag, TagGroup } from 'rsuite'
 import { Empty, Space, Spin } from 'antd'
@@ -20,8 +21,8 @@ export default function ArticoliSalvati() {
             const res = await axios.post(`${urlServer}/post`, { id: user.preferiti[i] })
 
             console.log("for data", res.data)
-            
-            setPosts(e =>  [...e, res.data[0]])
+
+            setPosts(e => [...e, res.data[0]])
         }
 
         history.push('/profile')
@@ -32,7 +33,7 @@ export default function ArticoliSalvati() {
     useEffect(() => {
 
         getDataPots().then((res) => {
-            if(user.preferiti.length) {
+            if (user.preferiti.length) {
                 setData(true)
             }
         })
@@ -42,25 +43,12 @@ export default function ArticoliSalvati() {
 
     return (
         <div>
-            {
-                data ? posts.map(e => {
-                    return < Link className="linkArticolo" to={`/post/${e._id}`}>
-                        <Panel className="articolo" header={e.title} shaded>
-                            <label className="scrittaTag">Tag</label>
-                            <TagGroup className="tag">
-                                {e.tags.map(tag => {
-                                    return (
-                                        <Tag>{tag}</Tag>
-                                    )
-                                })}
-                            </TagGroup>
-                            <p className="description">
-                                {e.description}
-                            </p>
-                        </Panel>
-                    </Link >
-                }) : user.preferiti.length ? <FlexboxGrid justify="center" className="loadingArgomento"><Space size="middle"><Spin size="large" /></Space></FlexboxGrid> : <Empty style={{marginTop: "50px"}} />
-            }
+            <FlexboxGrid justify="center">
+                {
+                    data ? posts.map(e => <ShortArticles articles={e} />) : user.preferiti.length ? <FlexboxGrid justify="center" className="loadingArgomento"><Space size="middle"><Spin size="large" /></Space></FlexboxGrid> : <Empty style={{ marginTop: "50px" }} />
+                }
+            </FlexboxGrid>
+
         </div>
     )
 }

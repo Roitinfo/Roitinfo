@@ -3,12 +3,17 @@ import AuthContext from '../Context/AuthContext'
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination'
 import axios from 'axios';
+import classNames from 'classnames';
 
-import {FlexboxGrid, TagGroup, Tag, Icon, Input, InputGroup, Panel} from 'rsuite'
+import { FlexboxGrid, TagGroup, Tag, Icon, Input, InputGroup, Panel } from 'rsuite'
 
 import { Space, Spin } from 'antd';
+import ShortArticles from './ShortArticles';
 
-export default function ModificaPost(props) {
+import Scritta from '../img/IMG_1408.png'
+import Lente from '../img/IMG_1409.png'
+
+export default function ModificaPost({ onArticleSelected }) {
     const { urlServer, user } = useContext(AuthContext)
 
     useEffect(() => {
@@ -49,40 +54,39 @@ export default function ModificaPost(props) {
         filterPosts()
     }, [search])
 
+
+    const [focusSearch, setFocusSearch] = useState(false)
+
     return (
         <div>
             <div id="posts">
-                <InputGroup inside id="inputSearch">
-                    <InputGroup.Addon>
-                        <Icon icon="search" />
-                    </InputGroup.Addon>
 
-                    <Input value={search} onChange={e => setSearch(e)} type="search" placeholder="Cerca articolo" />
-                </InputGroup>
-                {
-                    !postsFiltrati.length && !posts.length ?
-                        <FlexboxGrid justify="center" className="loadingPost"><Space size="middle"><Spin size="large" /></Space></FlexboxGrid>
-                        : currentPost.map(e => {
-                            return (
-                                <Link className="linkArticolo" id={e._id} onClick={e => props.onArticleSelected(e)}>
-                                    <Panel className="articolo" header={e.title} shaded>
-                                        <label className="scrittaTag">Tag</label>
-                                        <TagGroup className="tag">
-                                            {e.tags.map(tag => {
-                                                return (
-                                                    <Tag>{tag}</Tag>
-                                                )
-                                            })}
-                                        </TagGroup>
-                                        <p className="description">
-                                            {e.description}
-                                        </p>
-                                    </Panel>
-                                </Link>
+                {/* Barra di ricerca */}
+                <div style={{ marginTop: "50px", height: "100px" }}>
+                    <FlexboxGrid justify="center">
+                        <div style={{ width: "250px", padding: "10px", borderRadius: "10px", marginTop: "20px", backgroundColor: "#f3f3f3", marginLeft: "93px" }}>
+                            <img src={Lente} style={{ width: "25px", height: "25px" }} />
+                            <img src={Scritta} id="searchShow" className={classNames({ dontShow: search })} style={{ width: "180px", height: "30px", marginTop: "4px", marginLeft: "10px", position: "relative", zIndex: "2", transition: "all 0.3s" }} />
+                        </div>
+                    </FlexboxGrid>
+                    <FlexboxGrid justify="center">
+                        <input autoComplete="off" onChange={(e) => { setSearch(e.target.value) }} onBlur={() => {
+                            if (search === '')
+                                setFocusSearch(false)
+                        }} onFocus={() => {
+                            setFocusSearch(true)
+                        }} style={{ fontSize: "20px", position: "relative", zIndex: "4", background: "none", marginLeft: "90px" }} className="searchArticles" value={search} />
+                    </FlexboxGrid>
+                </div>
 
-                            )
-                        })
-                }
+                <FlexboxGrid justify="center">
+                    {
+                        !postsFiltrati.length && !posts.length ?
+                            <FlexboxGrid justify="center" className="loadingPost"><Space size="middle"><Spin size="large" /></Space></FlexboxGrid>
+                            : currentPost.map(e => <ShortArticles articles={e} edit={true} onArticleSelected={e => onArticleSelected(e)} />)
+                    }
+                </FlexboxGrid>
+
                 <Pagination posts={postsFiltrati} postsPerPage={postsPerPage} paginate={paginate} />
             </div>
         </div>

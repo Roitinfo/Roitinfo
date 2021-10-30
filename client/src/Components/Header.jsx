@@ -29,6 +29,7 @@ import scrittaAdmin from '../img/Untitled_Artwork-41.png'
 import backgroundAdmin from '../img/Untitled_Artwork-42.png'
 import imgAdmin from '../img/Untitled_Artwork-44.png'
 import casellaAdmin from '../img/Untitled_Artwork-43.png'
+import btnProfilo from '../img/Untitled_Artwork (1).png'
 
 export default function Header() {
 
@@ -149,7 +150,7 @@ export default function Header() {
 
             <FlexboxGrid justify="end" style={{ position: "relative", zIndex: "2", top: "-35px", height: "0px" }}>
                 {
-                    Cookie.get('token') ? <Link to="/profile" id="btnProfilo"><Button appearance="primary">Profilo</Button></Link> : <button style={{ background: "none", padding: "0px" }} onClick={() => setShowModal1(true)} id="btnLogin"><img src={BtnLogin} id="imgLogin" /></button>
+                    Cookie.get('token') ? <Link to="/profile" id="btnProfilo"><img src={btnProfilo} /></Link> : <button style={{ background: "none", padding: "0px" }} onClick={() => setShowModal1(true)} id="btnLogin"><img src={BtnLogin} id="imgLogin" /></button>
                 }
             </FlexboxGrid>
 
@@ -170,7 +171,7 @@ export default function Header() {
 
             {/* Modal per il login */}
             <Modal size="xs" show={showModal1} onHide={() => { setShowModal1(false); reset() }}>
-                <div style={{ background: "#3f6493", margin: "-25px", borderRadius: "20px", padding: "20px" }}>
+                <div style={{ background: "#3f6493", margin: "-25px", borderRadius: "20px", padding: "20px", height: "320px" }}>
                     <Modal.Header closeButton={false} style={{ height: "30px" }}>
                         <Modal.Title><img src={scrittaLogin} style={{ width: "70px", height: "30px" }} /></Modal.Title>
                         <FlexboxGrid justify="end" style={{ marginTop: "-28px" }}>
@@ -179,7 +180,7 @@ export default function Header() {
                             </button>
                         </FlexboxGrid>
                     </Modal.Header>
-                    <Modal.Body style={{ marginTop: "20px", overflow: "hidden" }}>
+                    <Modal.Body style={{ marginTop: "20px", overflow: "hidden", border: "1px solid black", minHeight: "180px", maxHeight: "180px" }}>
                         {/*     INPUT EMAIL LOGIN     */}
                         <div>
                             <img src={backgroundInput} style={{ width: "100%", height: "45px" }} />
@@ -209,7 +210,7 @@ export default function Header() {
                             </button>
                         </FlexboxGrid>
                     </Modal.Body>
-                    <Modal.Footer style={{ height: "50px" }}>
+                    <Modal.Footer style={{ minHeight: "50px", maxHeight: "50px" }}>
                         <button className="btnInvio" onClick={login} style={{marginTop: "40px"}}>
                             <img src={btnFreccia} />
                         </button>
