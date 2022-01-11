@@ -5,10 +5,10 @@
 
     padding-top: 15px;
     padding-left: 12px;
+    padding-bottom: 7px;
 }
 
 #nomeSito {
-    border: 1px solid black;
     font-size: 20px;
 
     width: 80px;
@@ -30,7 +30,7 @@
     margin-left: 25px;
 }
 
-#btnLogin, #btnProfilo {
+#btnProfilo {
     margin-top: -37px;
     margin-right: 50px;
 }
@@ -69,8 +69,18 @@
 }
 
 #imgLogo {
-    width: 150px;
-    height: 52px;
+    width: 160px;
+    height: 56px;
+}
+
+#boxLoginSiz {
+    display: flex;
+    justify-content: right;
+    
+    height: 58px;
+
+    margin-top: -58px;
+    margin-bottom: 5px;
 }
 
 #imgLogin {
@@ -83,6 +93,52 @@
 #imgLogin:hover {
     width: 72px;
     height: 40px;
+}
+
+@media screen and (max-width: 550px) {
+    #imgLogo {
+        width: 132px;
+        height: 46px;
+    }
+
+    #imgLogin {
+        width: 60px;
+        height: 34px;
+    }
+
+    #imgLogin:hover {
+        width: 62px;
+        height: 36px;
+    }
+
+    #boxLoginSiz {
+        height: 48px;
+
+        margin-top: -48px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #imgLogo {
+        width: 112px;
+        height: 40px;
+    }
+
+    #imgLogin {
+        width: 47px;
+        height: 28px;
+    }
+
+    #imgLogin:hover {
+        width: 49px;
+        height: 30px;
+    }
+
+    #boxLoginSiz {
+        height: 42px;
+
+        margin-top: -42px;
+    }
 }
 
 
@@ -192,4 +248,35 @@
     height: 48px;
 
     margin-bottom: 5px;
+}
+
+#roitiInformatica {
+    color: #3f6493;
+
+    font-size: 10vw;
+
+    font-family: Eina01;
+    font-weight: bold;
+}
+
+#scrittaSottoRoiti {
+    color: #3f6493;
+
+    font-size: 2.2vw;
+
+    margin-bottom: 40px;
+    margin-top: 37px;
+
+    font-family: Eina01;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 830px) {
+    #roitiInformatica {
+        font-size: 600%;
+    }
+
+    #scrittaSottoRoiti {
+        font-size: 130%;
+    }
 }

@@ -1,1 +1,8 @@
 @import '~antd/dist/antd.css';
+
+@font-face {
+    font-family: 'Eina01';
+    src: url('./fonts/eina/Eina01-Regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -54,7 +54,23 @@ function Carousel() {
         infinite: true,
         speed: 500,
         slidesToShow: slidesToShow,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 956,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 700,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     }
 
     const [search, setSearch] = useState(false)

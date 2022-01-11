@@ -36,9 +36,49 @@
     margin-right: 40px;
 
     transition: all 0.5s;
+
+    border: 1px solid black;
 }
 
-.btnPrincipali:hover {
+.secondiPrincipali {
+    padding: 10px;
+    background: none;
+
+    border-radius: 20px;
+
+    transition: all 0.5s;
+}
+
+#imgArticoli {
+    width: 300px;
+    height: 320px;
+}
+
+#imgProblemi {
+    width: 350px;
+    height: 250px;
+}
+
+#imgStudio {
+    width: 300px;
+    height: 280px;
+}
+
+.btnPrincipali:hover, .secondiPrincipali:hover {
     -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.23); 
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.23);
+}
+
+#btnImgMateriale {
+    margin-top: 40px;
+
+    border: "1px solid black";
+
+    padding: "20px";
+}
+
+@media screen and (max-width: 1218px) {
+    .btnPrincipali2 {
+        margin-left: 4%;
+    }
 }

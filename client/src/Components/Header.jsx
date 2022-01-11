@@ -140,28 +140,32 @@ export default function Header() {
 
     return (
         <div id="header">
-            <button style={{ padding: "0px", background: "none", position: "relative", zIndex: "0", top: "10px" }}>
-                <img src={Menu} id="imgMenu" />
-            </button>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <Link to="/">
+                    <img src={Logo} id="imgLogo" />
+                </Link>
+            </div>
 
-            <FlexboxGrid justify="center" style={{ position: "relative", zIndex: "1", top: "-25px" }}>
-                <Link to="/" id="linkNomeSito"><img src={Logo} id="imgLogo" /></Link>
-            </FlexboxGrid>
-
-            <FlexboxGrid justify="end" style={{ position: "relative", zIndex: "2", top: "-35px", height: "0px" }}>
+            <FlexboxGrid justify='right' id="boxLoginSiz" style={{ border: "1px solid orange", padding: "0px" }}>
                 {
-                    Cookie.get('token') ? <Link to="/profile" id="btnProfilo"><img src={btnProfilo} /></Link> : <button style={{ background: "none", padding: "0px" }} onClick={() => setShowModal1(true)} id="btnLogin"><img src={BtnLogin} id="imgLogin" /></button>
+                    Cookie.get('token') ? <Link to="/profile" id="btnProfilo">
+                        <img src={btnProfilo} />
+                    </Link>
+                        : <button style={{marginRight: "10%", padding: "0px", background: "none"}} onClick={() => setShowModal1(true)}>
+                            <img src={BtnLogin} id="imgLogin" />
+                        </button>
                 }
             </FlexboxGrid>
+
 
             {
                 location.pathname === '/' ? <div>
                     <FlexboxGrid justify="center">
-                        <img src={nomeSito} style={{ width: "600px", height: "100px" }} />
+                        <p id="roitiInformatica">Roiti informatica</p>
                     </FlexboxGrid>
 
                     <FlexboxGrid justify="center" style={{ marginTop: "-40px" }}>
-                        <img src={descrizioneSito} style={{ width: "550px", height: "90px", marginBottom: "15px" }} />
+                        <p id="scrittaSottoRoiti">PORTALE DI ALLENAMENTO E POTENZIAMENTO INFORMATICO</p>
                     </FlexboxGrid>
                 </div> : ''
             }
@@ -175,12 +179,12 @@ export default function Header() {
                     <Modal.Header closeButton={false} style={{ height: "30px" }}>
                         <Modal.Title><img src={scrittaLogin} style={{ width: "70px", height: "30px" }} /></Modal.Title>
                         <FlexboxGrid justify="end" style={{ marginTop: "-28px" }}>
-                            <button style={{ padding: "0px", background: "none" }} onClick={() => {setShowModal1(false); reset()}}>
+                            <button style={{ padding: "0px", background: "none" }} onClick={() => { setShowModal1(false); reset() }}>
                                 <img src={imgClose} id="imgClose" />
                             </button>
                         </FlexboxGrid>
                     </Modal.Header>
-                    <Modal.Body style={{ marginTop: "20px", overflow: "hidden", border: "1px solid black", minHeight: "180px", maxHeight: "180px" }}>
+                    <Modal.Body style={{ marginTop: "20px", overflow: "hidden", height: "180px" }}>
                         {/*     INPUT EMAIL LOGIN     */}
                         <div>
                             <img src={backgroundInput} style={{ width: "100%", height: "45px" }} />
@@ -210,9 +214,9 @@ export default function Header() {
                             </button>
                         </FlexboxGrid>
                     </Modal.Body>
-                    <Modal.Footer style={{ minHeight: "50px", maxHeight: "50px" }}>
-                        <button className="btnInvio" onClick={login} style={{marginTop: "40px"}}>
-                            <img src={btnFreccia} />
+                    <Modal.Footer>
+                        <button className="btnInvio" onClick={login} style={{ marginTop: "40px" }}>
+                            <img style={{ position: "relative", zIndex: "1" }} src={btnFreccia} />
                         </button>
                     </Modal.Footer>
                 </div>
@@ -228,7 +232,7 @@ export default function Header() {
                         <Modal.Title><img src={scrittaRegistrazione} style={{ width: "180px", height: "30px" }} /></Modal.Title>
 
                         <FlexboxGrid justify="end" style={{ marginTop: "-28px" }}>
-                            <button style={{ padding: "0px", background: "none" }} onClick={() => {setShowModal2(false); reset()}}>
+                            <button style={{ padding: "0px", background: "none" }} onClick={() => { setShowModal2(false); reset() }}>
                                 <img src={imgClose} id="imgClose" />
                             </button>
                         </FlexboxGrid>
@@ -295,7 +299,7 @@ export default function Header() {
                         </div>
                     </Modal.Body>
                     <Modal.Footer style={{ height: "50px" }}>
-                        <div className={classNames({dontShowDisplay: showBoxAdmin})}>
+                        <div className={classNames({ dontShowDisplay: showBoxAdmin })} style={{ position: "relative", zIndex: "0" }}>
                             <FlexboxGrid justify="start">
                                 <img src={backgroundAdmin} style={{ width: "200px" }} />
                             </FlexboxGrid>
@@ -310,8 +314,8 @@ export default function Header() {
                             </FlexboxGrid>
                         </div>
 
-                        <button className="btnInvio" onClick={register} style={{position: "relative", zIndex: "2"}}>
-                            <img src={btnFreccia} />
+                        <button className="btnInvio" onClick={register} style={{ position: "relative" }}>
+                            <img style={{ position: "relative", zIndex: "1" }} src={btnFreccia} />
                         </button>
                     </Modal.Footer>
                 </div>
