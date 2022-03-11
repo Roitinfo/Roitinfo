@@ -31,10 +31,13 @@ app.get('/newPost', (req, res) => {
             "prova1",
             "prova2",
             "prova3"
-        ]
+        ],
+        creator: "ehi",
+        version: 1,
     })
+    console.log(post)
 
-    post.save().then(result => res.send(result)).catch(err => res.send(err))
+    post.save().then(result => res.send(result)).catch(err => console.log(err))
 })
 
 

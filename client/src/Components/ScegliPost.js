@@ -1,23 +1,23 @@
 import React, { useState, useEffect, useContext } from 'react'
 import AuthContext from '../Context/AuthContext'
-import { Link } from 'react-router-dom';
 import Pagination from './Pagination'
 import axios from 'axios';
 import classNames from 'classnames';
 
-import { FlexboxGrid, TagGroup, Tag, Icon, Input, InputGroup, Panel } from 'rsuite'
+import { FlexboxGrid} from 'rsuite'
 
 import { Space, Spin } from 'antd';
-import ShortArticles from './ShortArticles';
+import ShortArticle from './ShortArticle';
 
 import Scritta from '../img/IMG_1408.png'
 import Lente from '../img/IMG_1409.png'
 
-export default function ModificaPost({ onArticleSelected }) {
+export default function ScegliPost({ onArticleSelected }) {
     const { urlServer, user } = useContext(AuthContext)
 
     useEffect(() => {
         axios.post(`${urlServer}/posts`).then(res => {
+            console.log(res.data)
             setPosts(res.data)
             setpostsFiltrati(res.data)
         })
@@ -83,11 +83,11 @@ export default function ModificaPost({ onArticleSelected }) {
                     {
                         !postsFiltrati.length && !posts.length ?
                             <FlexboxGrid justify="center" className="loadingPost"><Space size="middle"><Spin size="large" /></Space></FlexboxGrid>
-                            : currentPost.map(e => <ShortArticles articles={e} edit={true} onArticleSelected={e => onArticleSelected(e)} />)
+                            : currentPost.map(e => <ShortArticle article={e} onArticleSelected={e => onArticleSelected(e)} />)
                     }
                 </FlexboxGrid>
 
-                <Pagination posts={postsFiltrati} postsPerPage={postsPerPage} paginate={paginate} />
+                <Pagination posts={postsFiltrati} postsPerPage={postsPerPage} paginate={setCurrentPage} />
             </div>
         </div>
     )

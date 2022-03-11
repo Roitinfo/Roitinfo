@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
-import ShortArticles from './ShortArticles'
+import ShortArticle from './ShortArticle'
 import './Carousel.css'
 import { FlexboxGrid, Input, InputGroup } from 'rsuite'
 import classNames from 'classnames'
@@ -195,7 +195,7 @@ function Carousel() {
                             selectArticles.length > 0 ? selectArticles.map(el => {
                                 return (
                                     <div key={1} className="element">
-                                        <ShortArticles articles={el} center={true} />
+                                        <ShortArticle article={el} center={true} />
                                     </div>
                                 )
                             }) : <div key={1} className="element">

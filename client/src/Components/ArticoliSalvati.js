@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import AuthContext from '../Context/AuthContext'
 import axios from 'axios'
 import { Link, useHistory } from 'react-router-dom'
-import ShortArticles from './ShortArticles'
+import ShortArticle from './ShortArticle'
 
 import { FlexboxGrid, Panel, Placeholder, Tag, TagGroup } from 'rsuite'
 import { Empty, Space, Spin } from 'antd'
@@ -45,7 +45,7 @@ export default function ArticoliSalvati() {
         <div>
             <FlexboxGrid justify="center">
                 {
-                    data ? posts.map(e => <ShortArticles articles={e} />) : user.preferiti.length ? <FlexboxGrid justify="center" className="loadingArgomento"><Space size="middle"><Spin size="large" /></Space></FlexboxGrid> : <Empty style={{ marginTop: "50px" }} />
+                    data ? posts.map(e => <ShortArticle article={e} />) : user.preferiti.length ? <FlexboxGrid justify="center" className="loadingArgomento"><Space size="middle"><Spin size="large" /></Space></FlexboxGrid> : <Empty style={{ marginTop: "50px" }} />
                 }
             </FlexboxGrid>
 
