@@ -4,6 +4,11 @@ import { FlexboxGrid } from 'rsuite'
 import './Footer.css'
 
 export default function Footer() {
+    /*
+    Footer del sito:
+    - link al server discord
+    + link ad altri media?
+    */
     return (
         <div id="footer">
             <FlexboxGrid align="bottom" justify="center">

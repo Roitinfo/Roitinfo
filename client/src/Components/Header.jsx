@@ -31,8 +31,18 @@ import imgAdmin from '../img/Untitled_Artwork-44.png'
 import casellaAdmin from '../img/Untitled_Artwork-43.png'
 import btnProfilo from '../img/Untitled_Artwork (1).png'
 
-export default function Header() {
-
+export default function Header() 
+{
+    /*
+    Header del sito:
+    - logo del Roiti
+    - Pulsante per effettuare il login
+    - Pulsante per navigare alla pagina del profilo
+    - Informazioni aggiuntive nella home (!??)
+    Bug:
+    - login admin buggato
+    - vulnerabilità (controllo password effettuato lato client)
+    */
     const { urlServer, setUser } = useContext(AuthContext)
 
     const [showModal1, setShowModal1] = useState(false)

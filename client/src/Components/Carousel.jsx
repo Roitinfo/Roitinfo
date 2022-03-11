@@ -20,6 +20,12 @@ import scrittaNoDataArticles from '../img/Untitled_Artwork-40.png'
 import backgroundEquazioniCarousel from '../img/Untitled_Artwork-17.png'
 
 function Carousel() {
+    /*
+    Slideshow dei post presenti sul sito:
+    - Barra di ricerca via tag
+    - Post
+    - Frecce per navigare fra i post
+    */
 
     const [tags, setTags] = useState()
     const [filterTags, setFilterTags] = useState([])
