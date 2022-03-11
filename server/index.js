@@ -78,6 +78,12 @@ app.post('/register', (req, res) => {
     res.setHeader('Cache-Control', 'private');
     bcrypt.genSalt(saltRounds, function (err, salt) {
         bcrypt.hash(req.body.password, salt, function (err, hash) {
+            if (req.body.admin && req.body.adminPassword !== "1234")
+            {
+                res.send(false)
+                return;
+            }
+            
             const user = new User({
                 name: req.body.name,
                 surname: req.body.surname,

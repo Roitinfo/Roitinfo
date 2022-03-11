@@ -62,7 +62,6 @@ export default class LoginModal extends React.Component
         {
             if (res.data) 
             {
-                console.log("heeheh")
                 this.props.onHide()
                 this.reset()
                 Cookie.set('token', res.data._id)
