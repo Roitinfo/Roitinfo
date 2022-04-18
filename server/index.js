@@ -9,6 +9,12 @@ const bcrypt = require('bcrypt')
 
 const app = express()
 
+//Load Enviroments Variables
+if (process.env.NODE_ENV !== 'production') 
+{
+    require('dotenv').config();
+}
+
 app.use(cors())
 app.use(cookieParser())
 app.use(express.json())
@@ -17,7 +23,8 @@ const saltRounds = 10;
 
 const PORT = process.env.PORT || 4001
 
-const dbURI = "mongodb+srv://NPI:1niconico1@roitinfo.9lzvj.mongodb.net/Roitinfo?retryWrites=true&w=majority";
+const dbURI = process.env.DBURI;
+console.log(dbURI);
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => app.listen(PORT, () => console.log(`Server started on port: ${PORT}`)))
     .catch((err) => console.log(err));
@@ -78,7 +85,7 @@ app.post('/register', (req, res) => {
     res.setHeader('Cache-Control', 'private');
     bcrypt.genSalt(saltRounds, function (err, salt) {
         bcrypt.hash(req.body.password, salt, function (err, hash) {
-            if (req.body.admin && req.body.adminPassword !== "1234")
+            if (req.body.admin && req.body.adminPassword !== process.env.ADMINPSW)
             {
                 res.send(false)
                 return;
