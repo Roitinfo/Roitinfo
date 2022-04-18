@@ -115,13 +115,13 @@ export default class RegisterModal extends React.Component
                     <LoginField onChange={e => this.setState({surname : e.target.value})} fieldImg={imgSurname}/>
 
                     {/*     INPUT EMAIL LOGIN     */}
-                    <LoginField onChange={e => this.setState({email : e.target.value})} fieldImg={imgEmail}/>
+                    <LoginField type="email" onChange={e => this.setState({email : e.target.value})} fieldImg={imgEmail}/>
 
                     {/*     INPUT PASSWORD LOGIN     */}
-                    <LoginField onChange={e => this.setState({password : e.target.value})} fieldImg={imgPassword}/>
+                    <LoginField type="password" onChange={e => this.setState({password : e.target.value})} fieldImg={imgPassword}/>
 
                     {/*     INPUT PASSWORD LOGIN     */}
-                    <LoginField onChange={e => this.setState({passwordCheck : e.target.value})} fieldImg={imgConfermaPassword}/>
+                    <LoginField type="password" onChange={e => this.setState({passwordCheck : e.target.value})} fieldImg={imgConfermaPassword}/>
 
                     <div style={{ marginTop: "20px" }}>
                         <button onClick={() => this.setState({admin : !this.state.admin})} style={{ background: "none", padding: "0px", outline: "none" }}>
