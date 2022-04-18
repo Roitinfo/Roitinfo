@@ -8,8 +8,8 @@ import { FlexboxGrid } from 'rsuite'
 import Logo from '../../img/IMG_1343.png'
 import BtnLogin from '../../img/logIn.png'
 import btnProfilo from '../../img/Untitled_Artwork (1).png'
-import LoginModal from '../Login'
-import RegisterModal from '../Register'
+import LoginModal from './Login'
+import RegisterModal from './Register'
 import AuthContext from "../../Context/AuthContext"
 
 export default function Header() 
