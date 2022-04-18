@@ -9,7 +9,7 @@ const bcrypt = require('bcrypt')
 
 const app = express()
 
-//Load Enviroments Variables
+//Load Environment Variables
 if (process.env.NODE_ENV !== 'production') 
 {
     require('dotenv').config();
