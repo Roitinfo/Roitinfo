@@ -3,7 +3,7 @@ import ShortArticle from './ShortArticle'
 import './Carousel.css'
 import { FlexboxGrid, Input, InputGroup } from 'rsuite'
 import classNames from 'classnames'
-import AuthContext from '../Context/AuthContext'
+import AuthContext from '../context/AuthContext'
 import axios from 'axios'
 
 import Slider from 'react-slick'

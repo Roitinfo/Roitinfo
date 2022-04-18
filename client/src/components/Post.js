@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react'
 import Header from './Header'
 import { useParams, useHistory } from 'react-router'
 import axios from 'axios'
-import AuthContext from '../Context/AuthContext'
+import AuthContext from '../context/AuthContext'
 import Footer from './Footer'
 import ReactPlayer from 'react-player/youtube';
 

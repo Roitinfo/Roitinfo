@@ -2,12 +2,12 @@ import './App.css';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import Home from './Components/Home'
-import Articoli from './Components/Articoli';
-import Post from './Components/Post'
-import Profile from './Components/Profile'
-import Page404 from './Components/Page404'
-import { AuthProvider } from './Context/AuthContext';
+import Home from './components/Home'
+import Articoli from './components/Articoli';
+import Post from './components/Post'
+import Profile from './components/Profile'
+import Page404 from './components/Page404'
+import { AuthProvider } from './context/AuthContext';
 
 import 'rsuite/dist/styles/rsuite-default.css';
 

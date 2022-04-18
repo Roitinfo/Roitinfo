@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import AuthContext from '../Context/AuthContext'
+import AuthContext from '../context/AuthContext'
 import axios from 'axios';
 
 import { Button, FlexboxGrid, TagGroup, Tag, IconButton, Icon, Input, Alert } from 'rsuite'

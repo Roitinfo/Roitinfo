@@ -10,7 +10,7 @@ import BtnLogin from '../../img/logIn.png'
 import btnProfilo from '../../img/Untitled_Artwork (1).png'
 import LoginModal from './Login'
 import RegisterModal from './Register'
-import AuthContext from "../../Context/AuthContext"
+import AuthContext from "../../context/AuthContext"
 
 export default function Header() 
 {

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import axios from 'axios'
-import AuthContext from '../Context/AuthContext'
+import AuthContext from '../context/AuthContext'
 import Header from './Header'
 import Pagination from './Pagination'
 import ShortArticles from './ShortArticle'

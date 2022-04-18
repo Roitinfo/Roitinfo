@@ -15,7 +15,7 @@ import scrittaAdmin from '../../img/Untitled_Artwork-41.png'
 import backgroundAdmin from '../../img/Untitled_Artwork-42.png'
 import imgAdmin from '../../img/Untitled_Artwork-44.png'
 import casellaAdmin from '../../img/Untitled_Artwork-43.png'
-import AuthContext from '../../Context/AuthContext'
+import AuthContext from '../../context/AuthContext'
 import axios from 'axios'
 import LoginField from './LoginField'
 

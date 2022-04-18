@@ -8,7 +8,7 @@ import imgPassword from '../../img/IMG_1416.png'
 import imgAccount from '../../img/IMG_1420.png'
 import btnRegistrati from '../../img/Untitled_Artwork-3.png'
 import btnFreccia from '../../img/Untitled_Artwork-1.png'
-import AuthContext from '../../Context/AuthContext'
+import AuthContext from '../../context/AuthContext'
 import LoginField from './LoginField'
 import axios from 'axios'
 

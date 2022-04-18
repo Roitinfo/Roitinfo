@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import Header from './Header'
-import AuthContext from '../Context/AuthContext'
+import AuthContext from '../context/AuthContext'
 import ArticoliSalvati from './ArticoliSalvati'
 import ProblemiSalvati from './ProblemiSalvati'
 import PostEditor from './PostEditor'
