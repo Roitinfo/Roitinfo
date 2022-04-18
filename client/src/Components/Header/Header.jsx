@@ -1,37 +1,16 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState , useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import AuthContext from '../Context/AuthContext'
-import axios from 'axios'
 import Cookie from 'js-cookie'
-import classNames from 'classnames'
 
 import './Header.css'
-import { Button, FlexboxGrid, Modal, Input, Alert, Checkbox } from 'rsuite'
+import { FlexboxGrid } from 'rsuite'
 
-import Menu from '../img/IMG_1340.png'
-import Logo from '../img/IMG_1343.png'
-import BtnLogin from '../img/logIn.png'
-import nomeSito from '../img/IMG_1377.png'
-import descrizioneSito from '../img/IMG_1376.png'
-import scrittaLogin from '../img/IMG_1419.png'
-import scrittaRegistrazione from '../img/Untitled_Artwork-18.png'
-import imgClose from '../img/IMG_1425.png'
-import backgroundInput from '../img/IMG_1417.png'
-import imgEmail from '../img/IMG_1418.png'
-import imgPassword from '../img/IMG_1416.png'
-import imgAccount from '../img/IMG_1420.png'
-import btnRegistrati from '../img/Untitled_Artwork-3.png'
-import btnFreccia from '../img/Untitled_Artwork-1.png'
-import imgName from '../img/Untitled_Artwork-10.png'
-import imgSurname from '../img/Untitled_Artwork-8.png'
-import imgConfermaPassword from '../img/Untitled_Artwork-2.png'
-import scrittaAdmin from '../img/Untitled_Artwork-41.png'
-import backgroundAdmin from '../img/Untitled_Artwork-42.png'
-import imgAdmin from '../img/Untitled_Artwork-44.png'
-import casellaAdmin from '../img/Untitled_Artwork-43.png'
-import btnProfilo from '../img/Untitled_Artwork (1).png'
-import LoginModal from './Login'
-import RegisterModal from './Register'
+import Logo from '../../img/IMG_1343.png'
+import BtnLogin from '../../img/logIn.png'
+import btnProfilo from '../../img/Untitled_Artwork (1).png'
+import LoginModal from '../Login'
+import RegisterModal from '../Register'
+import AuthContext from "../../Context/AuthContext"
 
 export default function Header() 
 {
@@ -44,7 +23,7 @@ export default function Header()
     */
     const [showModal1, setShowModal1] = useState(false)
     const [showModal2, setShowModal2] = useState(false)
-
+    const {user} = useContext(AuthContext);
     const location = useLocation()
 
     return (
@@ -57,7 +36,7 @@ export default function Header()
 
             <FlexboxGrid justify='right' id="boxLoginSiz" style={{ border: "1px solid orange", padding: "0px" }}>
                 {
-                    Cookie.get('token') ? <Link to="/profile" id="btnProfilo">
+                    user ? <Link to="/profile" id="btnProfilo">
                         <img src={btnProfilo} />
                     </Link>
                         : <button style={{marginRight: "10%", padding: "0px", background: "none"}} onClick={() => setShowModal1(true)}>
