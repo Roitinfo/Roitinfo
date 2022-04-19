@@ -5,8 +5,7 @@ import Cookies from 'js-cookie'
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-    const urlServer = 'http://localhost:4001'
-    //const urlServer = 'https://roiti.herokuapp.com'
+    const urlServer = process.env.REACT_APP_URLSERVER;
 
     //dati utente
     const [user, setUser] = useState(undefined)
