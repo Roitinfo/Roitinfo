@@ -10,8 +10,6 @@ import ProblemiSalvati from './ProblemiSalvati'
 import PostEditor from './PostEditor'
 import ImpostazioniUser from './ImpostazioniUser'
 
-import Header from 'components/Header'
-import Footer from 'components/Footer'
 import ScegliPost from 'components/ScegliPost'
 import AuthContext from 'context/AuthContext'
 
@@ -73,7 +71,6 @@ export default function UserProfile() {
     if (user === undefined) {
         return (
             <div>
-                <Header />
                 <FlexboxGrid id="loadingPageProfile" justify="center">
                     <Space size="middle">
                         <Spin size="large" />
@@ -85,8 +82,6 @@ export default function UserProfile() {
 
     return (
         <div>
-            <Header />
-
             <Container>
                     <Sidebar id="sidebar">
                         <Sidenav id="sidenav" style={{backgroundColor: "#f3f3f3", marginTop: "50px"}}>
@@ -117,7 +112,6 @@ export default function UserProfile() {
                     {contentValue}
                 </Content>
             </Container>
-            <Footer />
         </div>
     )
 }

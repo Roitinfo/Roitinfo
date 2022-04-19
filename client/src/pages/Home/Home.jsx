@@ -5,9 +5,6 @@ import { Link } from 'react-router-dom'
 import './Home.css'
 import Carousel from './Carousel'
 
-import Header from 'components/Header'
-import Footer from 'components/Footer'
-
 import imgArticoli from 'img/IMG_1346.png'
 import imgProblemi from 'img/IMG_1347.png'
 import imgStudio from 'img/IMG_1348.png'
@@ -51,7 +48,6 @@ export default function Home()
 
     return (
         <div>
-            <Header />
             {
                 (winSiz > 825) ? <FlexboxGrid justify="center" style={{ marginTop: "40px", marginBottom: "80px", border: "1px solid black", paddingBottom: "30px", overflow: "hidden" }}>
                     {buttons}
@@ -61,7 +57,6 @@ export default function Home()
                 </div>
             }
             <Carousel />
-            <Footer />
         </div>
     )
 }

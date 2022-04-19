@@ -6,8 +6,6 @@ import ReactPlayer from 'react-player/youtube';
 
 import './Post.css'
 
-import Footer from 'components/Footer'
-import Header from 'components/Header'
 import AuthContext from 'context/AuthContext'
 
 import imgCircle from 'img/circle-outline.png'
@@ -223,7 +221,6 @@ export default function Post() {
     if (!post) {
         return (
             <div>
-                <Header />
                 <div className="Post">
                     <FlexboxGrid justify="center">
                         <p className="title">
@@ -247,7 +244,6 @@ export default function Post() {
     return (
         <div>
             <div id="pagePost">
-                <Header />
                 <div className="Post">
                     <FlexboxGrid justify="end">
                         {bookmark}
@@ -262,7 +258,6 @@ export default function Post() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     )
 }
