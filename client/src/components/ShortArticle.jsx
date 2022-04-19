@@ -1,9 +1,10 @@
 import React from 'react'
 import { FlexboxGrid } from 'rsuite'
+import { Link } from 'react-router-dom'
+
 import './ShortArticle.css'
 
-import FrecciaArticoli from '../img/Untitled_Artwork-22.png'
-import { Link } from 'react-router-dom'
+import FrecciaArticoli from 'img/Untitled_Artwork-22.png'
 
 export default function ShortArticle({ article, center, edit, onArticleSelected }) {
 

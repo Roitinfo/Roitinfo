@@ -1,16 +1,16 @@
 import React, { useState , useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import Cookie from 'js-cookie'
-
-import './Header.css'
 import { FlexboxGrid } from 'rsuite'
 
-import Logo from '../../img/IMG_1343.png'
-import BtnLogin from '../../img/logIn.png'
-import btnProfilo from '../../img/Untitled_Artwork (1).png'
+import './Header.css'
 import LoginModal from './Login'
 import RegisterModal from './Register'
-import AuthContext from "../../context/AuthContext"
+
+import AuthContext from "context/AuthContext"
+
+import Logo from 'img/IMG_1343.png'
+import BtnLogin from 'img/logIn.png'
+import btnProfilo from 'img/Untitled_Artwork (1).png'
 
 export default function Header() 
 {

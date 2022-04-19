@@ -1,6 +1,6 @@
 import React from 'react'
-
 import { Pagination as APagination  } from 'antd';
+
 import './Pagination.css'
 
 export default function Pagination({posts, postsPerPage, paginate}) {

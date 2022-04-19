@@ -1,14 +1,16 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
-import ShortArticle from 'components/ShortArticle'
-import './Carousel.css'
-import { FlexboxGrid, Input, InputGroup } from 'rsuite'
+import { FlexboxGrid } from 'rsuite'
 import classNames from 'classnames'
-import AuthContext from 'context/AuthContext'
 import axios from 'axios'
-
 import Slider from 'react-slick'
+
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+
+import './Carousel.css'
+
+import ShortArticle from 'components/ShortArticle'
+import AuthContext from 'context/AuthContext'
 
 import FreccaDestra from 'img/Untitled_Artwork-28.png'
 import FreccaSinistra from 'img/Untitled_Artwork-29.png'

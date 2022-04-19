@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react'
-import Header from 'components/Header'
-import ScegliPost from 'components/ScegliPost'
-
+import React from 'react'
 
 import './Articoli.css'
+
+import Header from 'components/Header'
+import ScegliPost from 'components/ScegliPost'
 
 import SfondoScrittaArticoli from 'img/Untitled_Artwork-11.png'
 import ScrittaArticoli from 'img/Untitled_Artwork-12.png'

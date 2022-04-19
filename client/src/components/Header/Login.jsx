@@ -1,16 +1,19 @@
 import React from 'react'
 import {FlexboxGrid, Modal, Alert} from 'rsuite'
 import Cookie from 'js-cookie'
-import scrittaLogin from '../../img/IMG_1419.png'
-import imgClose from '../../img/IMG_1425.png'
-import imgEmail from '../../img/IMG_1418.png'
-import imgPassword from '../../img/IMG_1416.png'
-import imgAccount from '../../img/IMG_1420.png'
-import btnRegistrati from '../../img/Untitled_Artwork-3.png'
-import btnFreccia from '../../img/Untitled_Artwork-1.png'
-import AuthContext from '../../context/AuthContext'
-import LoginField from './LoginField'
 import axios from 'axios'
+
+import LoginField from './LoginField'
+
+import AuthContext from 'context/AuthContext'
+
+import scrittaLogin from 'img/IMG_1419.png'
+import imgClose from 'img/IMG_1425.png'
+import imgEmail from 'img/IMG_1418.png'
+import imgPassword from 'img/IMG_1416.png'
+import imgAccount from 'img/IMG_1420.png'
+import btnRegistrati from 'img/Untitled_Artwork-3.png'
+import btnFreccia from 'img/Untitled_Artwork-1.png'
 
 export default class LoginModal extends React.Component
 {

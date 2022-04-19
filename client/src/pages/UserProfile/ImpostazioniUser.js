@@ -1,22 +1,21 @@
 import React, { useContext, useState } from 'react'
-import AuthContext from 'context/AuthContext'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-
-import './ImpostazioniUser.css'
-import backgroundInput from 'img/Impostazioni_profilo/Untitled_Artwork-21.png'
-import imgCambiaNome from 'img/Impostazioni_profilo/Untitled_Artwork-37.png'
-import imgSalva from 'img/Impostazioni_profilo/Untitled_Artwork.png'
-import imgCambiaCognomeBianco from 'img/Impostazioni_profilo/Untitled_Artwork-32.png'
-import imgCambiaCognomeBlu from 'img/Impostazioni_profilo/Untitled_Artwork-31.png'
-import imgCambiaPswBianco from 'img/Impostazioni_profilo/Untitled_Artwork-20.png'
-import imgPswVecchia from 'img/Impostazioni_profilo/Untitled_Artwork-24.png'
-import imgNuovaPsw from 'img/Impostazioni_profilo/Untitled_Artwork-25.png'
-import imgConfermaPsw from 'img/Impostazioni_profilo/Untitled_Artwork-26.png'
-
 import { Input, Button, FlexboxGrid, Alert } from 'rsuite'
 import Cookies from 'js-cookie'
 import classNames from 'classnames'
+
+import './ImpostazioniUser.css'
+
+import AuthContext from 'context/AuthContext'
+
+import backgroundInput from 'img/Impostazioni_profilo/Untitled_Artwork-21.png'
+import imgCambiaNome from 'img/Impostazioni_profilo/Untitled_Artwork-37.png'
+import imgSalva from 'img/Impostazioni_profilo/Untitled_Artwork.png'
+import imgCambiaCognomeBlu from 'img/Impostazioni_profilo/Untitled_Artwork-31.png'
+import imgPswVecchia from 'img/Impostazioni_profilo/Untitled_Artwork-24.png'
+import imgNuovaPsw from 'img/Impostazioni_profilo/Untitled_Artwork-25.png'
+import imgConfermaPsw from 'img/Impostazioni_profilo/Untitled_Artwork-26.png'
 
 export default function ImpostazioniUser() {
     const { user, setUser, urlServer } = useContext(AuthContext)

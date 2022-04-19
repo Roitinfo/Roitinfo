@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import classNames from 'classnames'
-import backgroundInput from '../../img/IMG_1417.png'
+
+import backgroundInput from 'img/IMG_1417.png'
 
 export default function LoginField({type, onChange, fieldImg})
 {

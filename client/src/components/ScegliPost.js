@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react'
-import AuthContext from '../context/AuthContext'
-import Pagination from './Pagination'
 import axios from 'axios';
 import classNames from 'classnames';
-
+import { Space, Spin } from 'antd';
 import { FlexboxGrid} from 'rsuite'
 
-import { Space, Spin } from 'antd';
 import ShortArticle from './ShortArticle';
+import Pagination from './Pagination'
 
-import Scritta from '../img/IMG_1408.png'
-import Lente from '../img/IMG_1409.png'
+import AuthContext from 'context/AuthContext'
+
+import Scritta from 'img/IMG_1408.png'
+import Lente from 'img/IMG_1409.png'
 
 export default function ScegliPost({ onArticleSelected }) {
     const { urlServer, user } = useContext(AuthContext)

@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import Header from 'components/Header'
-import Carousel from './Carousel'
-import Footer from 'components/Footer'
+import React, { useState } from 'react'
+import { FlexboxGrid } from 'rsuite'
 import { Link } from 'react-router-dom'
+
 import './Home.css'
-import { Button as RButton, FlexboxGrid } from 'rsuite'
+import Carousel from './Carousel'
+
+import Header from 'components/Header'
+import Footer from 'components/Footer'
+
 import imgArticoli from 'img/IMG_1346.png'
 import imgProblemi from 'img/IMG_1347.png'
 import imgStudio from 'img/IMG_1348.png'

@@ -1,12 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
-import AuthContext from 'context/AuthContext'
 import axios from 'axios';
-
 import { Button, FlexboxGrid, TagGroup, Tag, IconButton, Icon, Input, Alert } from 'rsuite'
-
 import { Input as AInput } from 'antd';
-
-
+/* EditorJs Imports  */
 import EditorJs from 'react-editor-js';
 import CheckList from '@editorjs/checklist';
 import List from '@editorjs/list'
@@ -15,6 +11,9 @@ import InlineCode from '@editorjs/inline-code'
 import Marker from '@editorjs/marker'
 import Header from '@editorjs/header'
 import LinkTool from '@editorjs/link'
+/* /EditorJs Imports */
+
+import AuthContext from 'context/AuthContext'
 
 export default function NewPost(props) {
 

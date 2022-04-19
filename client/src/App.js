@@ -1,11 +1,10 @@
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import 'rsuite/dist/styles/rsuite-default.css';
+
 import './App.css';
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-
-import {Home, Articoli, Page404, Post, UserProfile} from 'pages'
+import {Home, Articoli, Page404, Post, UserProfile} from './pages'
 import { AuthProvider } from './context/AuthContext';
-
-import 'rsuite/dist/styles/rsuite-default.css';
 
 function App() {
   return (

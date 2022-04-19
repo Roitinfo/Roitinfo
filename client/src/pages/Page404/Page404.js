@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import { Button } from 'rsuite'
+
 import './Page404.css'
 
 export default function Page404() {
