@@ -1,23 +1,22 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
-import ShortArticle from './ShortArticle'
+import ShortArticle from 'components/ShortArticle'
 import './Carousel.css'
 import { FlexboxGrid, Input, InputGroup } from 'rsuite'
 import classNames from 'classnames'
-import AuthContext from '../context/AuthContext'
+import AuthContext from 'context/AuthContext'
 import axios from 'axios'
 
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-import FreccaDestra from '../img/Untitled_Artwork-28.png'
-import FreccaSinistra from '../img/Untitled_Artwork-29.png'
-import Scritta from '../img/IMG_1408.png'
-import Lente from '../img/IMG_1409.png'
-import outlineSearchInput from '../img/Untitled_Artwork-33.png'
-import noDataArticles from '../img/Untitled_Artwork-39.png'
-import scrittaNoDataArticles from '../img/Untitled_Artwork-40.png'
-import backgroundEquazioniCarousel from '../img/Untitled_Artwork-17.png'
+import FreccaDestra from 'img/Untitled_Artwork-28.png'
+import FreccaSinistra from 'img/Untitled_Artwork-29.png'
+import Scritta from 'img/IMG_1408.png'
+import Lente from 'img/IMG_1409.png'
+import noDataArticles from 'img/Untitled_Artwork-39.png'
+import scrittaNoDataArticles from 'img/Untitled_Artwork-40.png'
+import backgroundEquazioniCarousel from 'img/Untitled_Artwork-17.png'
 
 function Carousel() {
     /*

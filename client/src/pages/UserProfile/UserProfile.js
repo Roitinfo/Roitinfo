@@ -1,25 +1,25 @@
 import React, { useContext, useState, useEffect } from 'react'
-import Header from './Header'
-import AuthContext from '../context/AuthContext'
+import Header from 'components/Header'
+import AuthContext from 'context/AuthContext'
 import ArticoliSalvati from './ArticoliSalvati'
 import ProblemiSalvati from './ProblemiSalvati'
 import PostEditor from './PostEditor'
 import ImpostazioniUser from './ImpostazioniUser'
-import ScegliPost from './ScegliPost'
-import Footer from './Footer'
+import ScegliPost from 'components/ScegliPost'
+import Footer from 'components/Footer'
 import { useHistory } from 'react-router'
 import Cookies from 'js-cookie'
 
 import { Container, Sidenav, Sidebar, Content, Nav, Icon, FlexboxGrid, Placeholder, Portal } from 'rsuite'
-import './Profile.css'
-import imgArticolo from '../img/articolo.png'
-import imgProblema from '../img/problem-solving.png'
-import imgManoConPenna from '../img/writing.png'
-import imgEdit from '../img/edit.png'
+import './UserProfile.css'
+import imgArticolo from 'img/articolo.png'
+import imgProblema from 'img/problem-solving.png'
+import imgManoConPenna from 'img/writing.png'
+import imgEdit from 'img/edit.png'
 import { Spin, Space } from 'antd';
 
 
-export default function Profile() {
+export default function UserProfile() {
 
     const history = useHistory()
 

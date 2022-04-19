@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react'
-import AuthContext from '../context/AuthContext'
+import AuthContext from 'context/AuthContext'
 import axios from 'axios'
 import { Link, useHistory } from 'react-router-dom'
-import ShortArticle from './ShortArticle'
+import ShortArticle from 'components/ShortArticle'
 
 import { FlexboxGrid, Panel, Placeholder, Tag, TagGroup } from 'rsuite'
 import { Empty, Space, Spin } from 'antd'

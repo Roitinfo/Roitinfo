@@ -1,15 +1,15 @@
 import React, { useEffect, useContext, useState } from 'react'
-import Header from './Header'
+import Header from 'components/Header'
 import { useParams, useHistory } from 'react-router'
 import axios from 'axios'
-import AuthContext from '../context/AuthContext'
-import Footer from './Footer'
+import AuthContext from 'context/AuthContext'
+import Footer from 'components/Footer'
 import ReactPlayer from 'react-player/youtube';
 
 import { Placeholder, FlexboxGrid, Icon, Divider, Checkbox } from 'rsuite'
 import './Post.css'
-import imgCircle from '../img/circle-outline.png'
-import imgCheck from '../img/checkbox-mark.png'
+import imgCircle from 'img/circle-outline.png'
+import imgCheck from 'img/checkbox-mark.png'
 
 export default function Post() {
     const { Paragraph } = Placeholder
