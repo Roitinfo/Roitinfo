@@ -4,9 +4,9 @@ import classNames from 'classnames';
 import { Space, Spin } from 'antd';
 import { FlexboxGrid} from 'rsuite'
 
-import ShortArticle from './ShortArticle';
 import Pagination from './Pagination'
 
+import ShortArticle from 'components/ShortArticle';
 import AuthContext from 'context/AuthContext'
 
 import Scritta from 'img/IMG_1408.png'

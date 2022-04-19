@@ -10,7 +10,7 @@ import ProblemiSalvati from './ProblemiSalvati'
 import PostEditor from './PostEditor'
 import ImpostazioniUser from './ImpostazioniUser'
 
-import ScegliPost from 'components/ScegliPost'
+import PostPicker from 'components/PostPicker'
 import AuthContext from 'context/AuthContext'
 
 import imgArticolo from 'img/articolo.png'
@@ -49,7 +49,7 @@ export default function UserProfile() {
                 break;
 
             case "Modifica":
-                setcontentValue(<ScegliPost onArticleSelected={ (e) => modifyArticle(e)}/>)
+                setcontentValue(<PostPicker onArticleSelected={ (id) => modifyArticle(id)}/>)
                 break;
 
             case "Scrivi":

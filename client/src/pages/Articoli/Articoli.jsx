@@ -2,7 +2,7 @@ import React from 'react'
 
 import './Articoli.css'
 
-import ScegliPost from 'components/ScegliPost'
+import PostPicker from 'components/PostPicker'
 
 import SfondoScrittaArticoli from 'img/Untitled_Artwork-11.png'
 import ScrittaArticoli from 'img/Untitled_Artwork-12.png'
@@ -18,7 +18,7 @@ export default function Articoli({history}) {
                     <img src={ScrittaArticoli} style={{ width: "200px", marginLeft: "-300px", marginTop: "9px" }} />
                 </FlexboxGrid>
             </div>
-            <ScegliPost onArticleSelected = {post => {history.push("/post/" + post.id)}}></ScegliPost>
+            <PostPicker onArticleSelected = {post => {history.push("/post/" + post.id)}}></PostPicker>
         </div>
     )
 }
